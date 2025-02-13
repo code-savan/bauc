@@ -40,7 +40,7 @@ const BlogCard = ({ title, author, slug, image, created_at }: BlogCardProps) => 
           <div className="p-6">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-sm text-gray-500 font-space-mono">
-                {formatDate(created_at)}
+                {formatDate(created_at || '')}
               </span>
               <span className="text-gray-300">•</span>
               <span className="text-sm text-gray-500 font-space-mono">

@@ -6,6 +6,7 @@ import { useDebouncedCallback } from 'use-debounce'
 import { Event } from '@/lib/supabase/types'
 import Link from 'next/link'
 import Image from 'next/image'
+import { formatDate } from '@/lib/utils'
 
 interface EventSearchProps {
   events: Event[]
@@ -46,7 +47,7 @@ export default function EventSearch({ events }: EventSearchProps) {
             >
               <div className="relative w-16 h-16 flex-shrink-0">
                 <Image
-                  src={event.image}
+                  src={event.banner_image || ''}
                   alt={event.title}
                   fill
                   className="object-cover rounded-lg"
@@ -57,7 +58,7 @@ export default function EventSearch({ events }: EventSearchProps) {
                   {event.title}
                 </h4>
                 <p className="text-xs text-gray-500 font-space-mono">
-                  {formatDate(event.date)}
+                  {formatDate(event.created_at || '')}
                 </p>
               </div>
             </Link>

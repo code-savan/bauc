@@ -35,7 +35,7 @@ export default function RecentBlogs({ blogs, currentBlogId }: RecentBlogsProps) 
                   {blog.title}
                 </h4>
                 <div className="flex items-center gap-2 text-xs text-gray-500 font-space-mono">
-                  <span>{formatDate(blog.created_at)}</span>
+                  <span>{formatDate(blog.created_at || '')}</span>
                 </div>
               </div>
             </div>

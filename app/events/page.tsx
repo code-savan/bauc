@@ -74,12 +74,12 @@ export default function EventsPage() {
   }, [])
 
   const filteredEvents = events.filter(event => {
-    if (!searchTerm) return true
+    if (!searchTerm) return true;
     return (
       event.title.toLowerCase().includes(searchTerm) ||
-      (event.description && typeof event.description === 'string' && event.description.toLowerCase().includes(searchTerm))
-    )
-  })
+      (typeof event.description === 'object' && event.description !== null && 'content' in event.description && typeof event.description.content === 'string' && event.description.content.toLowerCase().includes(searchTerm))
+    );
+  });
 
   const latestEvent = filteredEvents[0]
   const regularEvents = filteredEvents.slice(1)
@@ -126,7 +126,7 @@ export default function EventsPage() {
                   {latestEvent.title}
                 </h2>
                 <div className="flex items-center gap-3 text-gray-600 mb-6 font-space-mono text-sm">
-                  <span>{formatDate(latestEvent.created_at)}</span>
+                  <span>{formatDate(latestEvent.created_at || '')}</span>
                   <span>•</span>
                   <span>Hosted by: {latestEvent.hosted_by}</span>
                   <span>•</span>

@@ -28,7 +28,7 @@ const EventCard = ({ event }: EventCardProps) => {
             {event.title}
           </h3>
           <span className="text-sm text-gray-500 font-space-mono">
-            {formatDate(event.created_at)}
+            {formatDate(event.created_at || '')}
           </span>
           <div className="mt-2">
             <p className="text-sm text-gray-600">Hosted by: {event.hosted_by}</p>

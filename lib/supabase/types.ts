@@ -82,7 +82,7 @@ export type Event = {
     title: string;
     slug?: string;
     location?: string;
-    description?: Record<string, any>;
+    description?: Record<string, any> | null;
     gallery?: string[];
     banner_image?: string | null;
     event_video?: string | null;
