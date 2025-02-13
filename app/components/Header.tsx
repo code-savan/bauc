@@ -7,14 +7,14 @@ export default function Header() {
       {/* Top Bar */}
       <div className="bg-black py-2">
         <div className="container mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center justify-between w-[75%] mx-auto">
-            <a href="tel:+447840782759" className="text-white hover:text-white/80">
+          <div className="flex flex-wrap gap-1 items-center md:justify-between justify-center md:w-[75%] w-full mx-auto">
+            <a href="tel:+447840782759" className="text-white hover:text-white/80 block">
             +447840782759
             </a>
-            <a href="tel:+2348113822048" className="text-white hover:text-white/80">
+           <a href="tel:+2348113822048" className="text-white hover:text-white/80 block">
             +2348113822048
-            </a>
-            <a href="mailto:vet@baucinternational.com" className="text-white hover:text-white/80">
+           </a>
+            <a href="mailto:vet@baucinternational.com" className="text-white hover:text-white/80 block">
             vet@baucinternational.com
             </a>
 
@@ -34,7 +34,7 @@ export default function Header() {
             <Link href="/" className="text-gray-600 hover:text-green-600">Home</Link>
             <Link href="/vetted-properties" className="text-gray-600 hover:text-green-600">Vetted Properties</Link>
             <Link href="/developers" className="text-gray-600 hover:text-green-600">Developers</Link>
-            <Link href="/blog" className="text-gray-600 hover:text-green-600">Blog</Link>
+            <Link href="/blogs" className="text-gray-600 hover:text-green-600">Blogs</Link>
             <Link href="/events" className="text-gray-600 hover:text-green-600">Events</Link>
             <Link href="/expats-citizens" className="text-gray-600 hover:text-green-600">Expression of Intrest</Link>
           </nav>

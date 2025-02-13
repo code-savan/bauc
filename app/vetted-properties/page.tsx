@@ -12,6 +12,7 @@ interface Property {
   title: string;
   image: string;
   price?: string;
+  description?: string;
 }
 
 const properties: Property[] = [
@@ -25,6 +26,7 @@ const properties: Property[] = [
     title: 'CoO',
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800',
     price: '₦180M',
+    description: 'Queenfem Plaza is a commercial development located in the Wuse II District of Abuja. It offers a range of commercial spaces with modern amenities and a luxurious living experience.',
   },
   {
     id: '2',
@@ -36,6 +38,7 @@ const properties: Property[] = [
     title: 'CoO',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800',
     price: '₦250M',
+    description: 'The Opulent Place is a residential development located in the Wuse District of Abuja. It offers a range of 2-bedroom and 3-bedroom apartments with modern amenities and a luxurious living experience.',
   },
   {
     id: '3',
@@ -47,6 +50,7 @@ const properties: Property[] = [
     title: 'CoO',
     image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800',
     price: '₦150M',
+    description: 'The Petunia is a residential development located in the Jabi District of Abuja. It offers a range of 2-bedroom and 3-bedroom apartments with modern amenities and a luxurious living experience.',
   },
 ];
 
@@ -123,8 +127,17 @@ export default function VettedProperties() {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {properties.map((property) => (
-
-            <PropCard key={property.id} image={property.image} name={property.name} title={property.title} description={""} pricerange={property.price} location={property.location} status={property.status} type={property.type} area={property.area}  />
+            <PropCard
+              key={property.id}
+              image={property.image}
+              name={property.name}
+              location={property.location}
+              status={property.status}
+              area={property.area}
+              type={property.type}
+              price={property.price}
+              description={property.description}
+            />
           ))}
         </div>
 

@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceMono.variable} ${displayFair.variable} font-inter`}>
+      <body className={`${inter.variable} ${spaceMono.variable} ${displayFair.variable} font-inter w-full overflow-x-hidden`}>
         <Header />
         {children}
         <WhatsAppButton />

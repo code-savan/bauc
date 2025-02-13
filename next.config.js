@@ -9,6 +9,10 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+    domains: [
+      'images.unsplash.com',
+      'xliweicrvrldeigdatup.supabase.co' // Add your Supabase storage domain
+    ],
   },
 };
 
