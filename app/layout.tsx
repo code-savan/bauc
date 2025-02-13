@@ -23,6 +23,9 @@ const displayFair = localFont({
 export const metadata: Metadata = {
   title: 'BAUC International - Real Estate Investment Solutions',
   description: 'Professional real estate investment solutions for international investors in Nigeria.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

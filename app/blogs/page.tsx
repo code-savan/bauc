@@ -76,7 +76,7 @@ export default function BlogsPage() {
     return (
       blog.title.toLowerCase().includes(searchTerm) ||
       blog.author.toLowerCase().includes(searchTerm) ||
-      (blog.body && typeof blog.body.content === 'string' && blog.body.content.toLowerCase().includes(searchTerm))
+      (typeof blog.body === 'object' && blog.body !== null && 'content' in blog.body && typeof blog.body.content === 'string' && blog.body.content.toLowerCase().includes(searchTerm))
     )
   })
 
