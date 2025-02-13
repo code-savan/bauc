@@ -8,10 +8,23 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'aufs6izrzg.ufs.sh',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+        port: '',
+        pathname: '/**',
+      },
     ],
     domains: [
       'images.unsplash.com',
-      'xliweicrvrldeigdatup.supabase.co' // Add your Supabase storage domain
+      'xliweicrvrldeigdatup.supabase.co', // Add your Supabase storage domain
+      'aufs6izrzg.ufs.sh',
     ],
   },
 };
