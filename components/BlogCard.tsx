@@ -47,7 +47,7 @@ const BlogCard = ({ title, author, slug, image, created_at }: BlogCardProps) => 
                 By {author}
               </span>
             </div>
-
+            
             <h3 className="text-xl font-semibold mb-2 font-display-fair group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
               {title}
             </h3>
