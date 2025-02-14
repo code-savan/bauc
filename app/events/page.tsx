@@ -100,7 +100,7 @@ export default function EventsPage() {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
         <input
           type="text"
-          placeholder="Search articles..."
+          placeholder="Search events..."
           className="md:w-72 w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all font-space-mono text-sm"
         />
 
@@ -164,7 +164,7 @@ export default function EventsPage() {
       </div>
 
       {/* Search Modal */}
-      <SearchModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} blogs={[]} events={events} />
+      <SearchModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} blogs={[]} events={events} developers={[]} />
     </main>
   )
 }

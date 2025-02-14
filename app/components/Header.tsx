@@ -36,7 +36,7 @@ export default function Header() {
             <Link href="/developers" className="text-gray-600 hover:text-green-600">Developers</Link>
             <Link href="/blogs" className="text-gray-600 hover:text-green-600">Blogs</Link>
             <Link href="/events" className="text-gray-600 hover:text-green-600">Events</Link>
-            <Link href="/expats-citizens" className="text-gray-600 hover:text-green-600">Expression of Intrest</Link>
+            <Link href="/expats-citizens" className="text-gray-600 hover:text-green-600">Expression of Interest</Link>
             <Link href="/contact" className="text-gray-600 hover:text-green-600">Contact</Link>
           </nav>
 

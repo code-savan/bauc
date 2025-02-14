@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { useDebouncedCallback } from 'use-debounce'
-import { Blog, Event } from '@/lib/supabase/types'
+import { Blog, Event, Developer } from '@/lib/supabase/types'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -12,9 +12,10 @@ interface SearchModalProps {
   onClose: () => void
   blogs: Blog[]
   events: Event[]
+  developers: Developer[]
 }
 
-export default function SearchModal({ isOpen, onClose, blogs, events }: SearchModalProps) {
+export default function SearchModal({ isOpen, onClose, blogs, events, developers }: SearchModalProps) {
   const [searchTerm, setSearchTerm] = useState('')
 
   const filteredBlogs = blogs.filter(blog => {
@@ -23,6 +24,10 @@ export default function SearchModal({ isOpen, onClose, blogs, events }: SearchMo
 
   const filteredEvents = events.filter(event => {
     return event.title.toLowerCase().includes(searchTerm.toLowerCase())
+  }).slice(0, 5) // Limit to 5 results
+
+  const filteredDevelopers = developers.filter(developer => {
+    return developer.title.toLowerCase().includes(searchTerm.toLowerCase())
   }).slice(0, 5) // Limit to 5 results
 
   const handleSearch = useDebouncedCallback((term: string) => {
@@ -48,14 +53,14 @@ export default function SearchModal({ isOpen, onClose, blogs, events }: SearchMo
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-        <h2 className="text-xl font-bold mb-4">Search Articles and Events</h2>
+        {/* <h2 className="text-xl font-bold mb-4">Search..</h2> */}
         <div className="relative mb-4">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
             onChange={(e) => handleSearch(e.target.value)}
             value={searchTerm}
-            placeholder="Search articles and events..."
+            placeholder="Search..."
             className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all font-space-mono text-sm"
           />
         </div>
@@ -124,11 +129,43 @@ export default function SearchModal({ isOpen, onClose, blogs, events }: SearchMo
               ))}
             </div>
           )}
+
+          {/* Render Developers */}
+          {filteredDevelopers.length > 0 && (
+            <div className="mt-4">
+              <h3 className="font-semibold mb-2">Developers</h3>
+              {filteredDevelopers.map((developer) => (
+                <Link
+                 key={developer.id}
+                  href={`/events/${developer.id}`}
+                  className="flex items-center gap-4 p-2 hover:bg-gray-100 transition-colors"
+                  onClick={onClose}
+               >
+                  <div className="relative w-16 h-16 flex-shrink-0">
+                    <Image
+                      src={developer.image || '/default-image.jpg'}
+                      alt={developer.title}
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold line-clamp-1 mb-1">
+                      {developer.title}
+                    </h4>
+                    <p className="text-xs text-gray-500 font-space-mono">
+                      {/* {formatDate(event.created_at)} */}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         <button
           onClick={onClose}
-          className="mt-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+          className="mt-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors w-full"
         >
           Close
         </button>

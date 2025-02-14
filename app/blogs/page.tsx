@@ -176,7 +176,7 @@ export default function BlogsPage() {
       </div>
 
       {/* Search Modal */}
-      <SearchModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} blogs={blogs} events={[]} />
+      <SearchModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} blogs={blogs} events={[]} developers={[]} />
     </main>
   )
 }
