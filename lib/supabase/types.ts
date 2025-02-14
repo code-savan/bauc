@@ -36,6 +36,11 @@ export interface Database {
         Insert: Omit<ImportJob, 'id' | 'created_at' | 'updated_at'>
         Update: Partial<ImportJob>
       }
+      expression_of_interests: {
+        Row: ExpressionOfInterest
+        Insert: Omit<ExpressionOfInterest, 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<ExpressionOfInterest>
+      }
     }
     Views: {
       [_ in never]: never
@@ -123,6 +128,36 @@ export type ImportJob = {
     error: string
   }>
   created_by: string
+  created_at: string
+  updated_at: string
+}
+
+export type ExpressionOfInterest = {
+  id: string
+  first_name: string
+  last_name: string
+  phone: string
+  email: string
+  residential_address: string
+  country: string
+  state: string
+  city: string
+  address_landmark?: string
+  occupation: string
+  investment_country: string
+  specific_city: 'Yes' | 'No'
+  specific_city_details?: string | null
+  services_interested: string[]
+  services_other?: string | null
+  property_type: string
+  property_type_other?: string | null
+  budget_range: string
+  additional_features?: string
+  timeline: string
+  how_did_you_hear: string
+  how_did_you_hear_other?: string | null
+  additional_information?: string
+  consent: boolean
   created_at: string
   updated_at: string
 }

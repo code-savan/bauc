@@ -1,5 +1,16 @@
-export const formatDate = (dateString: string) => {
-  if (!dateString) return 'N/A';
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' }
-  return new Date(dateString).toLocaleDateString(undefined, options)
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[])
+{
+    return twMerge(clsx(inputs))
+}
+
+export function formatDate(date: string) {
+    const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+    return new Date(date).toLocaleDateString('en-US', options);
 }
