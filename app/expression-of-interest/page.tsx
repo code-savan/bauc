@@ -170,7 +170,7 @@ const EOIPage = () => {
                           <SelectTrigger>
                             <SelectValue placeholder="Select Country" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent  className="bg-white">
                             <SelectItem value="Nigeria">Nigeria</SelectItem>
                             <SelectItem value="Ghana">Ghana</SelectItem>
                             <SelectItem value="Other">Other</SelectItem>
@@ -219,7 +219,7 @@ const EOIPage = () => {
                           <SelectTrigger>
                             <SelectValue placeholder="Select Country" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-white">
                             <SelectItem value="Nigeria">Nigeria</SelectItem>
                             <SelectItem value="Ghana">Ghana</SelectItem>
                             <SelectItem value="Other">Other</SelectItem>
@@ -275,7 +275,7 @@ const EOIPage = () => {
                           <SelectTrigger>
                             <SelectValue placeholder="Select Property Type" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-white">
                             <SelectItem value="Residential">Residential</SelectItem>
                             <SelectItem value="Commercial">Commercial</SelectItem>
                             <SelectItem value="Industrial">Industrial</SelectItem>
@@ -320,7 +320,7 @@ const EOIPage = () => {
                           <SelectTrigger>
                             <SelectValue placeholder="Select Timeline" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent  className="bg-white">
                             <SelectItem value="Immediately">Immediately</SelectItem>
                             <SelectItem value="Within 3 months">Within 3 months</SelectItem>
                             <SelectItem value="Within 6 months">Within 6 months</SelectItem>
@@ -342,7 +342,7 @@ const EOIPage = () => {
                           <SelectTrigger>
                             <SelectValue placeholder="Select an option" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent  className="bg-white">
                             <SelectItem value="Referral">Referral</SelectItem>
                             <SelectItem value="Online Search">Online Search</SelectItem>
                             <SelectItem value="Social Media">Social Media</SelectItem>
@@ -415,7 +415,7 @@ const EOIPage = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-black text-white"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Submit Expression of Interest"}
