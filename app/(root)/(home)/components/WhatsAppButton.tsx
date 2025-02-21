@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
   const message = 'Hello! I would like to know more about your real estate investment solutions.';
 
   return (
-    <div className="fixed bottom-8 left-4">
+    <div className="fixed bottom-8 left-4 z-30">
       {isOpen && (
         <div className="absolute bottom-16 left-0 bg-white rounded-lg shadow-xl p-4 mb-4 w-72 transform transition-all duration-300 ease-in-out">
           <div className="text-sm text-gray-600 mb-4">
