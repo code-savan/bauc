@@ -14,7 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
-import { Building2, User, MapPin, BriefcaseIcon, HomeIcon } from 'lucide-react';
+import { Building2, User, MapPin, BriefcaseIcon, HomeIcon, Loader2 } from 'lucide-react';
 
 type FormData = {
   firstName: string;
@@ -30,8 +30,6 @@ type FormData = {
   investmentCountry: string;
   specificCity: string;
   specificCityDetails?: string;
-  servicesInterested: string[];
-  servicesOther?: string;
   propertyType: string;
   propertyTypeOther?: string;
   budgetRange: string;
@@ -41,14 +39,19 @@ type FormData = {
   howDidYouHearOther?: string;
   additionalInformation: string;
   consent: boolean;
+  servicesInterested: string[];
+  servicesOther?: string;
 };
 
 const EOIPage = () => {
-  const { register, handleSubmit, control, watch } = useForm<FormData>();
+  const { register, handleSubmit, control, watch, reset } = useForm<FormData>({
+    defaultValues: {
+      servicesInterested: [],
+    }
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const watchSpecificCity = watch('specificCity');
-  const watchServicesInterested = watch('servicesInterested') || [];
   const watchPropertyType = watch('propertyType');
   const watchHowDidYouHear = watch('howDidYouHear');
 
@@ -68,9 +71,10 @@ const EOIPage = () => {
           address_landmark: data.addressLandmark,
           occupation: data.occupation,
           investment_country: data.investmentCountry,
-          specific_city: data.specificCity === 'Yes' ? data.specificCityDetails : null,
-          services_interested: data.servicesInterested,
-          services_other: data.servicesInterested.includes('Other') ? data.servicesOther : null,
+          specific_city: data.specificCity,
+          specific_city_details: data.specificCity === 'Yes' ? data.specificCityDetails : null,
+          services_interested: data.servicesInterested || [],
+          services_other: data.servicesInterested?.includes('Other') ? data.servicesOther : null,
           property_type: data.propertyType,
           property_type_other: data.propertyType === 'Other' ? data.propertyTypeOther : null,
           budget_range: data.budgetRange,
@@ -84,9 +88,12 @@ const EOIPage = () => {
       ]);
 
       if (error) throw error;
-      toast.success("Form submitted successfully!");
-    } catch (error) {
-      toast.error("Error submitting form. Please try again.");
+
+      toast.success("Thank you! Your expression of interest has been submitted successfully.");
+      reset();
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      toast.error(error.message || "Failed to submit form. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -103,7 +110,8 @@ const EOIPage = () => {
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
               {/* Personal Information */}
-              <div className="space-y-6">
+
+              <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <User className="h-5 w-5 text-muted-foreground" />
                   <h2 className="text-xl font-semibold">Personal Information</h2>
@@ -111,43 +119,55 @@ const EOIPage = () => {
                 <Separator />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input
-                      id="firstName"
-                      placeholder="Enter your first name"
-                      {...register('firstName', { required: true })}
-                    />
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input
-                      id="lastName"
-                      placeholder="Enter your last name"
-                      {...register('lastName', { required: true })}
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="firstName">First Name</Label>
+                  <Input
+                    id="firstName"
+                    placeholder="Enter your first name"
+                    {...register('firstName', { required: true })}
+                  />
+                </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone/Mobile</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="Enter your mobile number"
-                      {...register('phone', { required: true })}
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="lastName">Last Name</Label>
+                  <Input
+                    id="lastName"
+                    placeholder="Enter your last name"
+                    {...register('lastName', { required: true })}
+                  />
+                </div>
+                </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Enter your email address"
-                      {...register('email', { required: true })}
-                    />
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone/Mobile</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="Enter your mobile number"
+                    {...register('phone', { required: true })}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email address"
+                    {...register('email', { required: true })}
+                  />
+                </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="occupation">Occupation</Label>
+                  <Input
+                    id="occupation"
+                    placeholder="Enter your occupation"
+                    {...register('occupation', { required: true })}
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -158,6 +178,7 @@ const EOIPage = () => {
                     {...register('residentialAddress', { required: true })}
                   />
                 </div>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
@@ -201,7 +222,7 @@ const EOIPage = () => {
               </div>
 
               {/* Investment Interest */}
-              <div className="space-y-6">
+              <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Building2 className="h-5 w-5 text-muted-foreground" />
                   <h2 className="text-xl font-semibold">Investment Interest</h2>
@@ -332,6 +353,28 @@ const EOIPage = () => {
                     />
                   </div>
 
+                  {/* Services Interested */}
+              <div className="space-y-2">
+                <Label>Services Interested In</Label>
+                <Controller
+                  control={control}
+                  name="servicesInterested"
+                  render={({ field }) => (
+                    <Select onValueChange={(value) => field.onChange([value])} defaultValue={field.value?.[0]}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select Services" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white">
+                        <SelectItem value="Property Purchase">Property Purchase</SelectItem>
+                        <SelectItem value="Property Management">Property Management</SelectItem>
+                        <SelectItem value="Investment Advisory">Investment Advisory</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+              </div>
+
                   <div className="space-y-2">
                     <Label htmlFor="howDidYouHear">How Did You Hear About Us?</Label>
                     <Controller
@@ -369,7 +412,7 @@ const EOIPage = () => {
               </div>
 
               {/* Additional Information */}
-              <div className="space-y-6">
+              <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <BriefcaseIcon className="h-5 w-5 text-muted-foreground" />
                   <h2 className="text-xl font-semibold">Additional Information</h2>
@@ -412,13 +455,22 @@ const EOIPage = () => {
                 </div>
               </div>
 
+
+
               {/* Submit Button */}
               <Button
                 type="submit"
                 className="w-full bg-black text-white"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Submitting..." : "Submit Expression of Interest"}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Expression of Interest"
+                )}
               </Button>
             </form>
           </CardContent>
