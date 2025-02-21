@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import GoToTop from './components/GoToTop';
 import { Toaster } from "sonner";
+import PopupModal from '@/components/PopupModal';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const spaceMono = Space_Mono({
@@ -42,6 +43,7 @@ export default function RootLayout({
         <WhatsAppButton />
         <GoToTop />
         <Footer />
+        <PopupModal />
         <Toaster />
       </body>
     </html>

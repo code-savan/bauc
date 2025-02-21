@@ -1,8 +1,85 @@
 "use client"
 
-import { Link2, Twitter, Instagram, Linkedin, User, Mail, MapPin, Phone } from "lucide-react"
+import { useState, useEffect } from 'react'
+import { Link2, Twitter, Instagram, Linkedin, User, Mail, MapPin, Phone, Loader2 } from "lucide-react"
+import { supabase } from '@/lib/supabaseClient'
+import { toast } from "sonner"
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  country: string;
+  subject: string;
+  message: string;
+}
 
 export default function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    phone: '',
+    country: '',
+    subject: '',
+    message: ''
+  });
+
+  // Fetch user's country on component mount
+  useEffect(() => {
+    const getCountry = async () => {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        setFormData(prev => ({ ...prev, country: data.country_name }));
+      } catch (error) {
+        console.error('Error fetching country:', error);
+      }
+    };
+    getCountry();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase.from('contactform').insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          country: formData.country,
+          subject: formData.subject,
+          message: formData.message
+        }
+      ]);
+
+      if (error) throw error;
+
+      toast.success("Your message has been sent successfully! We appreciate your feedback and will get back to you shortly.");
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        country: formData.country, // Keep the country
+        subject: '',
+        message: ''
+      });
+    } catch (error: any) {
+      console.error('Error submitting form:', error);
+      toast.error(error.message || "Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   return (
     <>
       <div className="w-full grid lg:grid-cols-2 gap-16 px-6 py-16 max-w-7xl mx-auto">
@@ -12,7 +89,7 @@ export default function ContactSection() {
             <h2 className="text-6xl font-medium tracking-tight leading-[1.1]">Drop a message</h2>
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm font-medium text-gray-600">
                 NAME
@@ -20,13 +97,18 @@ export default function ContactSection() {
               <div className="relative">
                 <input
                   id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Enter your name"
+                  required
                   className="w-full h-14 pl-12 pr-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-300"
                 />
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               </div>
             </div>
 
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium text-gray-600">
                 EMAIL
@@ -34,11 +116,52 @@ export default function ContactSection() {
               <div className="relative">
                 <input
                   id="email"
+                  name="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Enter your email"
+                  required
                   className="w-full h-14 pl-12 pr-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-300"
                 />
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="phone" className="text-sm font-medium text-gray-600">
+                PHONE
+              </label>
+              <div className="relative">
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Enter your phone number"
+                  required
+                  className="w-full h-14 pl-12 pr-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-300"
+                />
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              </div>
+            </div>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="subject" className="text-sm font-medium text-gray-600">
+                SUBJECT
+              </label>
+              <div className="relative">
+                <input
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Enter message subject"
+                  required
+                  className="w-full h-14 px-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-300"
+                />
               </div>
             </div>
 
@@ -48,7 +171,11 @@ export default function ContactSection() {
               </label>
               <textarea
                 id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Enter your message"
+                required
                 className="w-full min-h-[180px] p-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-300 resize-none"
               />
             </div>
@@ -56,18 +183,25 @@ export default function ContactSection() {
             <div className="flex items-center gap-4 pt-2">
               <button
                 type="submit"
-                className="px-8 h-12 bg-[#0f1728] text-white rounded-full hover:bg-[#0f1728]/90 transition-colors"
+                disabled={isSubmitting}
+                className="px-8 h-12 bg-[#0f1728] text-white rounded-full hover:bg-[#0f1728]/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center min-w-[150px]"
               >
-                Submit Message
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Submit Message"
+                )}
               </button>
-
             </div>
           </form>
         </div>
 
         {/* Map & Contact Info Section */}
         <div className="space-y-8">
-          <div className="relative w-full h-[480px] bg-gray-50 rounded-lg overflow-hidden">
+          <div className="relative w-full h-[550px] bg-gray-50 rounded-lg overflow-hidden">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.755658309759!2d7.454402696789555!3d9.08600980000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b929d261bc1%3A0xf87655077fcf6153!2sKINGFEM%20GA247!5e0!3m2!1sen!2sng!4v1739528860783!5m2!1sen!2sng"
               width="100%"
