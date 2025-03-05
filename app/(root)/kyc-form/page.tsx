@@ -322,6 +322,7 @@ export default function KYCForm() {
         documentation: uploadedFiles.documentation?.url || null,
         additional_info: data.additionalInfo,
         consent: data.consent,
+        documents_url: uploadedFiles.verification?.url ? [uploadedFiles.verification.url] : [],
         document_type: data.verificationDoc?.type || null,
       });
 
@@ -351,6 +352,7 @@ export default function KYCForm() {
           documentation: uploadedFiles.documentation?.url || null,
           additional_info: data.additionalInfo,
           consent: data.consent,
+          documents_url: uploadedFiles.verification?.url ? [uploadedFiles.verification.url] : [],
           document_type: data.verificationDoc?.type || null,
         });
 
@@ -367,7 +369,25 @@ export default function KYCForm() {
       }, 1500); // 1.5 second delay to show the success message
 
     } catch (error: any) {
-      showToast('Submission Error', error.message || 'Failed to submit form');
+      console.error('Submission error:', error);
+
+      // Handle specific error cases with user-friendly messages
+      if (error.message) {
+        if (error.message.includes('duplicate key') && error.message.includes('email')) {
+          showToast('Form Error', 'This email address is already registered in our system.');
+        } else if (error.message.includes('violates foreign key constraint')) {
+          showToast('Form Error', 'There was an issue with one of your selections. Please check your form.');
+        } else if (error.message.includes('violates not-null constraint')) {
+          showToast('Form Error', 'Please fill in all required fields.');
+        } else if (error.message.includes('malformed array literal')) {
+          showToast('Form Error', 'There was an issue with your document upload. Please try again.');
+        } else {
+          // Generic error message for other cases
+          showToast('Submission Error', 'We couldn\'t process your form. Please try again later.');
+        }
+      } else {
+        showToast('Submission Error', 'Something went wrong. Please try again later.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -767,7 +787,7 @@ export default function KYCForm() {
                   {/* Declaration */}
                   <div className="space-y-4">
                     <div className="flex items-center space-x-2">
-                      <Checkbox {...register('consent')} id="consent" />
+                      <Checkbox {...register('consent')} id="consent" required />
                       <Label htmlFor="consent" className="text-sm">
                         I hereby confirm that the information provided in this form is true, accurate and complete to the best of my knowledge.
                         I authorize BAUC International to use this information for operational purposes only.
