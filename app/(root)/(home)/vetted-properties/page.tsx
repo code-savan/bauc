@@ -1,60 +1,86 @@
-import Image from 'next/image';
-import Link from 'next/link';
+"use client"
+
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabaseClient'
 import PropCard from '@/components/PropCard'
+import { motion } from 'framer-motion'
+import { Pagination } from '@/components/ui/pagination'
+import { Skeleton } from '@/components/ui/skeleton'
+import Link from 'next/link'
+import { Property } from '@/lib/supabase/types'
+import Image from 'next/image'
 
-interface Property {
-  id: string;
-  name: string;
-  location: string;
-  status: string;
-  area: string;
-  type: string;
-  title: string;
-  image: string;
-  price?: string;
-  description?: string;
-}
+export default function VettedProperties({
+  searchParams,
+}: {
+  searchParams?: { page?: string }
+}) {
+  const [properties, setProperties] = useState<Property[]>([])
+  const [loading, setLoading] = useState(true)
+  const [totalPages, setTotalPages] = useState(1)
 
-const properties: Property[] = [
-  {
-    id: '1',
-    name: 'Queenfem Plaza by Kingfem',
-    location: 'Wuse II, Abuja',
-    status: 'Completed',
-    area: '1.5sqm',
-    type: 'Commercial',
-    title: 'CoO',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800',
-    price: '₦180M',
-    description: 'Queenfem Plaza is a commercial development located in the Wuse II District of Abuja. It offers a range of commercial spaces with modern amenities and a luxurious living experience.',
-  },
-  {
-    id: '2',
-    name: 'The Opulent Place by Pentfield',
-    location: 'Wuse District, Abuja',
-    status: 'Awaiting approval',
-    area: '4,134.11 sqm',
-    type: 'Residential',
-    title: 'CoO',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800',
-    price: '₦250M',
-    description: 'The Opulent Place is a residential development located in the Wuse District of Abuja. It offers a range of 2-bedroom and 3-bedroom apartments with modern amenities and a luxurious living experience.',
-  },
-  {
-    id: '3',
-    name: 'The Petunia by Pentfield',
-    location: 'Jabi District, Abuja',
-    status: 'Ongoing',
-    area: '3,103.20 sqm',
-    type: 'Residential',
-    title: 'CoO',
-    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800',
-    price: '₦150M',
-    description: 'The Petunia is a residential development located in the Jabi District of Abuja. It offers a range of 2-bedroom and 3-bedroom apartments with modern amenities and a luxurious living experience.',
-  },
-];
+  const currentPage = Number(searchParams?.page) || 1
+  const pageSize = 20
 
-export default function VettedProperties() {
+  useEffect(() => {
+    async function fetchProperties() {
+      setLoading(true)
+      try {
+        // Calculate pagination
+        const from = (currentPage - 1) * pageSize
+        const to = from + pageSize - 1
+
+        // Fetch properties with pagination
+        const { data, error, count } = await supabase
+          .from('properties')
+          .select('*', { count: 'exact' })
+        //   .eq('status', 'pending')
+          .range(from, to)
+          .order('created_at', { ascending: false })
+
+        if (error) {
+          throw error
+        }
+
+        if (data) {
+          setProperties(data)
+          // Calculate total pages
+          if (count) {
+            setTotalPages(Math.ceil(count / pageSize))
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching properties:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProperties()
+  }, [currentPage])
+
+  // Skeleton loader for properties
+  const PropertySkeleton = () => (
+    <div className="bg-white rounded-2xl shadow-sm overflow-hidden animate-pulse">
+      <div className="h-72 w-full bg-gray-200"></div>
+      <div className="p-6">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="h-7 w-7 rounded-full bg-gray-200"></div>
+          <div className="h-4 w-1/3 bg-gray-200 rounded"></div>
+        </div>
+        <div className="h-6 w-3/4 bg-gray-200 rounded mb-3"></div>
+        <div className="h-4 w-full bg-gray-200 rounded mb-6"></div>
+        <div className="pt-4 border-t border-gray-100">
+          <div className="flex justify-between">
+            <div className="h-6 w-16 bg-gray-200 rounded"></div>
+            <div className="h-6 w-16 bg-gray-200 rounded"></div>
+            <div className="h-6 w-16 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -123,47 +149,56 @@ export default function VettedProperties() {
         </div>
       </div>
 
-      {/* Properties Grid */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {properties.map((property) => (
-            <PropCard
-              key={property.id}
-              image={property.image}
-              name={property.name}
-              location={property.location}
-              status={property.status}
-              area={property.area}
-              type={property.type}
-              price={property.price}
-              description={property.description}
-            />
-          ))}
+      {/* Properties Section */}
+      <div className="container mx-auto px-4 py-12">
+        {/* Properties Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-12">
+          {loading ? (
+            // Show skeletons while loading
+            Array(3).fill(0).map((_, index) => (
+              <PropertySkeleton key={index} />
+            ))
+          ) : properties.length > 0 ? (
+            // Show properties
+            properties.map((property) => (
+              <Link href={`/vetted-properties/${property.id}`} key={property.id}>
+                <PropCard
+                  image={property.thumbnail || property.full_image || '/placeholder-property.jpg'}
+                  name={property.title}
+                  location={Array.isArray(property.location) ? property.location.join(', ') : property.location}
+                  status={property.status || "Approved"}
+                  area={property.area ? `${property.area} sqm` : 'N/A'}
+                  type={property.property_type || property.type || "Residential"}
+                  price={property.price_range || "Contact for price"}
+                  description={typeof property.description === 'object'
+                    ? property.description.content
+                    : property.description || "No description available"}
+                  land_status={property.land_status || "N/A"}
+                />
+              </Link>
+            ))
+          ) : (
+            // No properties found
+            <div className="col-span-full text-center py-12">
+              <h3 className="text-xl font-medium text-gray-600">No properties found</h3>
+              <p className="text-gray-500 mt-2">Please check back later for new listings.</p>
+            </div>
+          )}
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center items-center mt-12 space-x-2">
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg bg-green-600 text-white">
-            1
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50">
-            2
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50">
-            3
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+        {!loading && totalPages > 1 && (
+          <div className="flex justify-center mt-12">
+            <div className="bg-white rounded-xl shadow-sm p-4">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                baseUrl="/vetted-properties"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </main>
-  );
+  )
 }

@@ -55,31 +55,32 @@ export interface Database {
 }
 
 export type Property = {
-  id: string
-  title: string
-  slug?: string
-  description?: Record<string, any>
-  status?: string
-  location: string
-  type: string
-  property_type?: string
-  area?: number
-  mortgage_option?: boolean
-  initial_deposit?: string
-  land_mark?: string | null
-  discount?: string
-  land_status?: string | null
-  amenities?: string[]
-  completion_date?: string
-  gallery?: string[]
-  thumbnail?: string | null
-  full_image?: string | null
-  price_range?: string
-  payment_term?: string
-  created_by?: string
-  created_at?: string
-  updated_at?: string
-  developer_id?: string
+    id: string;
+    title: string;
+    slug?: string;
+    description?: string | { content: string; [key: string]: any };
+    status?: string;
+    location: string | string[];
+    type: string;
+    property_type?: string;
+    area?: number;
+    mortgage_option?: boolean;
+    initial_deposit?: string;
+    land_mark?: string | null;
+    discount?: string;
+    land_status?: string | null;
+    amenities?: string[];
+    completion_date?: string;
+    gallery?: string[];
+    thumbnail?: string | null;
+    full_image?: string | null;
+    price_range?: string;
+    payment_term?: string;
+    website?: string;
+    created_by?: string;
+    created_at?: string;
+    updated_at?: string;
+    developer_id?: string;
 }
 
 export type Event = {
