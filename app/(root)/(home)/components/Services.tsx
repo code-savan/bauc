@@ -1,8 +1,6 @@
-
-
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 interface Service {
@@ -14,74 +12,99 @@ interface Service {
 const services: Service[] = [
   {
     image: '/1.jpg',
-    title: 'Real Estate Portfolio Vetting',
-    content: 'Our designated experienced legal team take their time to scrutinize every real estate portfolio in Nigeria listed on our directory for authenticity before recommending them for client consumption. You will be sure to get unbiased, up to date detailed information about any real estate portfolio investment in Nigeria. Based on the detailed information provided, our client is certain to make the right and most profitable real estate investment. Also, because of the high risk associated with the real estate portfolio investment in Nigeria, you are sure of a safe investment portfolio through BAUC International.'
+    title: 'PORTFOLIO VETTING',
+    content: `Our vetting service ensures that real estate investments are credible and secure. We conduct a thorough portfolio search by applying to federal and state land registries to verify the authenticity of real estate portfolios. A physical portfolio inspection is carried out to confirm the availability of the property. <br /><br /> Additionally, we verify the developer's credentials, including registration with relevant authorities, project delivery history, business duration, litigation records, external partnerships, financial standing, and online presence. Risk assessment is also conducted to determine the accuracy of the developer's claims and evaluate the investment's risk level.`
   },
   {
     image: '/2.jpg',
-    title: 'Property Portfolio Search',
-    content: 'Do you have specific real estate needs or a specific location that you want your property portfolio investment in? <br /><br /> No matter what your real estate investment need is, you can count on our unbiased professional and client-oriented real estate investment advisory service. We don’t cut corners! We only recommend property investment that has been thoroughly vetted by our legal team.'
+    title: 'PORTFOLIO DEVELOPMENT MANAGEMENT',
+    content: 'We provide expert portfolio development management, ensuring smooth execution from planning to completion. Our services include defining project goals, creating project plans with clear objectives, timelines, and budgets, and organizing teams to collaborate with relevant industries and authorities. We allocate financial and human resources efficiently while tracking project progress, measuring performance strategies, and making corrective adjustments as needed. <br /><br /> Quality assurance is a priority, ensuring projects meet predefined standards. We manage stakeholder engagement, oversee budget and cost control, and coordinate risk management, including vendor supervision, material procurement, and issue resolution. Upon project completion, we ensure all goals are met within the stipulated timeline.'
   },
   {
     image: '/3.jpg',
-    title: 'Supervision, Development & Management of Real Estate Portfolio',
-    content: 'We help source for high reputable engineers, vendors, suppliers and developers for that your building projects, therefore you don’t need to worry about owning that dream home or property investment portfolio. We ensure that all construction best practice and guidelines are followed by the developers and quality materials are used for your projects.'
+    title: 'PORTFOLIO SUPERVISION MANAGEMENT',
+    content: 'Our portfolio supervision management services ensure daily real estate operations run efficiently. We oversee project and contractor supervision while ensuring compliance with legal and regulatory standards. Resource allocation is managed effectively, with financial services including budgeting and income-expenditure reporting. Quality control is maintained through maintenance supervision, tenant complaint management, and structural material oversight. We track project progress, implement corrective measures, and conduct risk assessments to ensure compliance with zoning laws and safety regulations. <br /><br /> Our team management strategies ensure seamless coordination, clear goal communication, and conflict resolution. We also facilitate stakeholder communication, ensuring transparency with developers and contractors. Budget monitoring is conducted to keep projects within financial limits, with necessary adjustments made when needed. Finally, we oversee project closure by achieving deliverables, obtaining approvals, finalizing contracts, and conducting post-project evaluations to assess outcomes.'
   },
   {
     image: '/4.webp',
-    title: 'Real Estate Advisory Back Home',
-    content: `Are you looking to invest back home in Nigeria but can’t trust your funds with a relative or family member? or are you compelled by financial returns and looking to add real estate investment portfolio?
-<br />
-We understand the complexity and common risk associated with real estate investment in Nigeria and Africa, however we are here to make it hassle free for you.
-<br />
-We only partner with real estate developers that are genuine and credible in the industry with track records of stewardship and professionalism. Our aim is to ensure your real estate investment is safe with the right investment profile that meet your portfolio investment plan.
+    title: 'LEGAL SERVICES',
+    content: `Our legal services provide clients with expert consultation, case analysis, and strategic legal advice. We draft essential legal documents such as lease agreements, demand notices, and contract agreements. <br /><br /> We also handle litigation and court representation, including preparing necessary court documents, pleadings, motions, and settlement agreements, and representing clients in court proceedings. <br /><br /> Additionally, we offer alternative dispute resolution, assisting clients in negotiation, mediation, and arbitration proceedings to achieve favorable settlements outside of court.
 
 `
   },
   {
     image: '/5.jpg',
-    title: 'Real Estate Portfolio Management',
-    content: 'No need to worry about the supervision, development and management of your real estate portfolio.  We work closely with our legal and property management team oversee your investment in-country. We also furnish our client with a market value of their portfolio investment and advise accordingly.'
+    title: 'PORTFOLIO MANAGEMENT',
+    content: 'Our portfolio management services cover a comprehensive range of real estate oversight. We authenticate the legitimacy of real estate portfolios, manage tenant screening and selection, and handle lease agreements, tenant relations, and dispute resolutions. <br /><br /> Financial management is also a key component, including rent collection and detailed financial reporting. Additionally, we coordinate regular property inspections, maintenance, and repairs while executing strategic marketing initiatives to promote vacant portfolio units.'
   },
-  {
-    image: '/6.jpg',
-    title: 'Real Estate Exhibition in Diaspora',
-    content: 'No need to travel back home in search of different real estate options, We bring properly vetted real estate developers to your doorstep. This avails you to exception investment deals and an opportunity to meet first hand with the top senior executives of the property companies.'
-  },
+//   {
+//     image: '/6.jpg',
+//     title: 'Real Estate Exhibition in Diaspora',
+//     content: 'No need to travel back home in search of different real estate options, We bring properly vetted real estate developers to your doorstep. This avails you to exception investment deals and an opportunity to meet first hand with the top senior executives of the property companies.'
+//   },
   {
     image: '/7.jpg',
-    title: 'Mortgage/Financial Partner',
-    content: 'We are committed to meeting the property investment needs of different clientele strata, whether it is for off plan project or you want a bespoke instalment payment plan or possibly you want a mortgage/financial partner to fund your property investment, we have got you covered as our well experienced real estate team will definitely point you in the right direction.'
+    title: 'PORTFOLIO INVESTMENT',
+    content: 'We guide clients through portfolio investment by offering expert consultation and vetting services. Our team ensures that vetted properties align with clients\' investment goals, verifying property availability and expected completion dates. <br /><br /> We provide flexible payment plans and confirm that payment terms adhere to the specific property type, ensuring a seamless investment process.'
   },
 
 ];
 
 const Services = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemsPerSlide, setItemsPerSlide] = useState(1);
     const containerRef = useRef<HTMLDivElement>(null);
+
+    // Update items per slide based on screen size
+    useEffect(() => {
+      const handleResize = () => {
+        if (window.innerWidth >= 768) {
+          setItemsPerSlide(2);
+        } else {
+          setItemsPerSlide(1);
+        }
+      };
+
+      // Set initial value
+      handleResize();
+
+      // Add event listener
+      window.addEventListener('resize', handleResize);
+
+      // Clean up
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const scroll = (direction: 'left' | 'right') => {
       if (containerRef.current) {
-        const scrollAmount = direction === 'left' ? -400 : 400;
+        const slideWidth = containerRef.current.clientWidth;
+        const scrollAmount = direction === 'left' ? -slideWidth : slideWidth;
         containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+        // Update current index
+        if (direction === 'left' && currentIndex > 0) {
+          setCurrentIndex(currentIndex - itemsPerSlide);
+        } else if (direction === 'right' && currentIndex < services.length - itemsPerSlide) {
+          setCurrentIndex(currentIndex + itemsPerSlide);
+        }
       }
     };
+
   return (
    <section className="py-20 bg-gray-50">
          <div className="container mx-auto">
          <h2 className="font-display-fair text-[20px] md:text-5xl text-center mb-16 font-bold md:font-normal">HOW WE HELP OUR CLIENT ACHIEVE THEIR REAL ESTATE INVESTMENT NEEDS</h2>
            <div className="relative">
-
              <div
                ref={containerRef}
-               className="flex gap-8 overflow-x-hidden scroll-smooth px-4 "
+               className="flex gap-8 overflow-x-hidden scroll-smooth px-4"
              >
                {services.map((service, index) => (
                  <div
                    key={index}
-                   className="flex-none w-[320px] md:w-[550px] group "
+                   className="flex-none w-full md:w-[calc(50%-16px)] group relative"
                  >
-                   <div className="relative h-80 w-[320px] md:w-[550px] mb-4 overflow-hidden ">
+                   <div className="relative h-80 w-full mb-4 overflow-hidden">
                      <Image
                        src={service.image}
                        alt={service.image}
@@ -91,18 +114,39 @@ const Services = () => {
                    </div>
                    <h3 className="text-[17px] font-semibold mb-1">{service.title}</h3>
                    <p className="text-gray-600 text-[12px]" dangerouslySetInnerHTML={{__html: service.content}}></p>
-                   {/* <button className="mt-4 font-space-mono text-sm text-green-600 hover:text-green-700 transition-colors">
-                     VIEW PROFILE
-                   </button> */}
                  </div>
                ))}
              </div>
 
+             {/* Navigation arrows - positioned differently on mobile vs desktop */}
+             <div className="md:hidden absolute bottom-[calc(100%-300px)] right-8 flex space-x-2 z-10">
+               <button
+                 onClick={() => scroll('left')}
+                 className="bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors"
+                 disabled={currentIndex === 0}
+               >
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                 </svg>
+               </button>
+               <button
+                 onClick={() => scroll('right')}
+                 className="bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors"
+                 disabled={currentIndex >= services.length - itemsPerSlide}
+               >
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                 </svg>
+               </button>
+             </div>
            </div>
-           <div className=' w-fit flex space-x-3 float-right pt-3'>
-           <button
+
+           {/* Desktop navigation arrows - shown only on md screens and above */}
+           <div className='hidden md:flex w-fit space-x-3 float-right pt-3'>
+             <button
                onClick={() => scroll('left')}
-               className=" bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors"
+               className="bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors"
+               disabled={currentIndex === 0}
              >
                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -110,7 +154,8 @@ const Services = () => {
              </button>
              <button
                onClick={() => scroll('right')}
-               className=" bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors"
+               className="bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors"
+               disabled={currentIndex >= services.length - itemsPerSlide}
              >
                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

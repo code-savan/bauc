@@ -1,23 +1,48 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Home,
+  Building2,
+  Users,
+  BookOpen,
+  Calendar,
+  FileText,
+  Contact,
+  X
+} from 'lucide-react';
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/", label: "Home", icon: <Home className="w-5 h-5" /> },
+    { href: "/vetted-properties", label: "Vetted Properties", icon: <Building2 className="w-5 h-5" /> },
+    { href: "/developers", label: "Developers", icon: <Users className="w-5 h-5" /> },
+    { href: "/blogs", label: "Blogs", icon: <BookOpen className="w-5 h-5" /> },
+    { href: "/events", label: "Events", icon: <Calendar className="w-5 h-5" /> },
+    { href: "/expression-of-interest", label: "Expression of Interest", icon: <FileText className="w-5 h-5" /> },
+    { href: "/contact", label: "Contact", icon: <Contact className="w-5 h-5" /> },
+  ];
+
   return (
-    <header className="w-full">
+    <header className="w-full relative">
       {/* Top Bar */}
       <div className="bg-black py-2">
         <div className="container mx-auto px-4 flex justify-between items-center text-sm">
           <div className="flex flex-wrap gap-1 items-center md:justify-between justify-center md:w-[75%] w-full mx-auto">
             <a href="tel:+447840782759" className="text-white hover:text-white/80 block">
-            +447840782759
+              +447840782759
             </a>
-           <a href="tel:+2348113822048" className="text-white hover:text-white/80 block">
-            +2348113822048
-           </a>
+            <a href="tel:+2348113822048" className="text-white hover:text-white/80 block">
+              +2348113822048
+            </a>
             <a href="mailto:vet@baucinternational.com" className="text-white hover:text-white/80 block">
-            vet@baucinternational.com
+              vet@baucinternational.com
             </a>
-
           </div>
         </div>
       </div>
@@ -31,23 +56,61 @@ export default function Header() {
           </Link>
 
           <nav className="hidden md:flex space-x-6">
-            <Link href="/" className="text-gray-600 hover:text-green-600">Home</Link>
-            <Link href="/vetted-properties" className="text-gray-600 hover:text-green-600">Vetted Properties</Link>
-            <Link href="/developers" className="text-gray-600 hover:text-green-600">Developers</Link>
-            <Link href="/blogs" className="text-gray-600 hover:text-green-600">Blogs</Link>
-            <Link href="/events" className="text-gray-600 hover:text-green-600">Events</Link>
-            <Link href="/expression-of-interest" className="text-gray-600 hover:text-green-600">Expression of Interest</Link>
-            <Link href="/contact" className="text-gray-600 hover:text-green-600">Contact</Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-gray-600 hover:text-green-600"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          <button
+            className="md:hidden z-50"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-white z-40 md:hidden"
+          >
+            <div className="container mx-auto px-4 pt-24">
+              <nav className="flex flex-col space-y-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-center space-x-4 text-gray-600 hover:text-green-600 text-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.icon}
+                    <span>{link.label}</span>
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
