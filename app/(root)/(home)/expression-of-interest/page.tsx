@@ -364,11 +364,13 @@ const EOIPage = () => {
                       <SelectTrigger>
                         <SelectValue placeholder="Select Services" />
                       </SelectTrigger>
-                      <SelectContent className="bg-white">
-                        <SelectItem value="Property Purchase">Property Purchase</SelectItem>
-                        <SelectItem value="Property Management">Property Management</SelectItem>
-                        <SelectItem value="Investment Advisory">Investment Advisory</SelectItem>
-                        <SelectItem value="Other">Other</SelectItem>
+                      <SelectContent className="bg-white capitalize">
+                        <SelectItem value="Property Purchase">VETTING SERVICES</SelectItem>
+                        <SelectItem value="Property Purchase">PORTFOLIO DEVELOPMENT MANAGEMENT</SelectItem>
+                        <SelectItem value="Property Purchase">LEGAL SERVICES</SelectItem>
+                        <SelectItem value="Property Purchase">PORTFOLIO INVESTMENT</SelectItem>
+                        <SelectItem value="Property Purchase">PORTFOLIO MANAGEMENT</SelectItem>
+                        <SelectItem value="Property Purchase">PORTFOLIO SUPERVISION MANAGEMENT</SelectItem>
                       </SelectContent>
                     </Select>
                   )}
