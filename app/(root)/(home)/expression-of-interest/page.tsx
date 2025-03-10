@@ -365,7 +365,7 @@ const EOIPage = () => {
                         <SelectValue placeholder="Select Services" />
                       </SelectTrigger>
                       <SelectContent className="bg-white capitalize">
-                        <SelectItem value="Property Purchase">Vetting Services</SelectItem>
+                        <SelectItem value="Property Purchase">Portfolio Vetting</SelectItem>
                         <SelectItem value="Property Purchase">Portfolio Development Management</SelectItem>
                         <SelectItem value="Property Purchase">Legal Services</SelectItem>
                         <SelectItem value="Property Purchase">Portfolio Investment</SelectItem>
