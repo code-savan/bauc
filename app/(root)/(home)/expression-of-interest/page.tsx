@@ -365,12 +365,12 @@ const EOIPage = () => {
                         <SelectValue placeholder="Select Services" />
                       </SelectTrigger>
                       <SelectContent className="bg-white capitalize">
-                        <SelectItem value="Property Purchase">VETTING SERVICES</SelectItem>
-                        <SelectItem value="Property Purchase">PORTFOLIO DEVELOPMENT MANAGEMENT</SelectItem>
-                        <SelectItem value="Property Purchase">LEGAL SERVICES</SelectItem>
-                        <SelectItem value="Property Purchase">PORTFOLIO INVESTMENT</SelectItem>
-                        <SelectItem value="Property Purchase">PORTFOLIO MANAGEMENT</SelectItem>
-                        <SelectItem value="Property Purchase">PORTFOLIO SUPERVISION MANAGEMENT</SelectItem>
+                        <SelectItem value="Property Purchase">Vetting Services</SelectItem>
+                        <SelectItem value="Property Purchase">Portfolio Development Management</SelectItem>
+                        <SelectItem value="Property Purchase">Legal Services</SelectItem>
+                        <SelectItem value="Property Purchase">Portfolio Investment</SelectItem>
+                        <SelectItem value="Property Purchase">Portfolio Management</SelectItem>
+                        <SelectItem value="Property Purchase">Portfolio Supervision Management</SelectItem>
                       </SelectContent>
                     </Select>
                   )}
