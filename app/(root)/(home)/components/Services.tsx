@@ -11,7 +11,7 @@ interface Service {
 
 const services: Service[] = [
   {
-    image: '/1.jpg',
+    image: '/1.webp',
     title: 'PORTFOLIO VETTING',
     content: `Our vetting service ensures that real estate investments are credible and secure. We conduct a thorough portfolio search by applying to federal and state land registries to verify the authenticity of real estate portfolios. A physical portfolio inspection is carried out to confirm the availability of the property. <br /><br /> Additionally, we verify the developer's credentials, including registration with relevant authorities, project delivery history, business duration, litigation records, external partnerships, financial standing, and online presence. Risk assessment is also conducted to determine the accuracy of the developer's claims and evaluate the investment's risk level.`
   },
@@ -26,7 +26,7 @@ const services: Service[] = [
     content: 'Our portfolio supervision management services ensure daily real estate operations run efficiently. We oversee project and contractor supervision while ensuring compliance with legal and regulatory standards. Resource allocation is managed effectively, with financial services including budgeting and income-expenditure reporting. Quality control is maintained through maintenance supervision, tenant complaint management, and structural material oversight. We track project progress, implement corrective measures, and conduct risk assessments to ensure compliance with zoning laws and safety regulations. <br /><br /> Our team management strategies ensure seamless coordination, clear goal communication, and conflict resolution. We also facilitate stakeholder communication, ensuring transparency with developers and contractors. Budget monitoring is conducted to keep projects within financial limits, with necessary adjustments made when needed. Finally, we oversee project closure by achieving deliverables, obtaining approvals, finalizing contracts, and conducting post-project evaluations to assess outcomes.'
   },
   {
-    image: '/4.webp',
+    image: '/4.png',
     title: 'LEGAL SERVICES',
     content: `Our legal services provide clients with expert consultation, case analysis, and strategic legal advice. We draft essential legal documents such as lease agreements, demand notices, and contract agreements. <br /><br /> We also handle litigation and court representation, including preparing necessary court documents, pleadings, motions, and settlement agreements, and representing clients in court proceedings. <br /><br /> Additionally, we offer alternative dispute resolution, assisting clients in negotiation, mediation, and arbitration proceedings to achieve favorable settlements outside of court.
 
@@ -37,16 +37,16 @@ const services: Service[] = [
     title: 'PORTFOLIO MANAGEMENT',
     content: 'Our portfolio management services cover a comprehensive range of real estate oversight. We authenticate the legitimacy of real estate portfolios, manage tenant screening and selection, and handle lease agreements, tenant relations, and dispute resolutions. <br /><br /> Financial management is also a key component, including rent collection and detailed financial reporting. Additionally, we coordinate regular property inspections, maintenance, and repairs while executing strategic marketing initiatives to promote vacant portfolio units.'
   },
-//   {
-//     image: '/6.jpg',
-//     title: 'Real Estate Exhibition in Diaspora',
-//     content: 'No need to travel back home in search of different real estate options, We bring properly vetted real estate developers to your doorstep. This avails you to exception investment deals and an opportunity to meet first hand with the top senior executives of the property companies.'
-//   },
   {
-    image: '/7.jpg',
-    title: 'PORTFOLIO INVESTMENT',
-    content: 'We guide clients through portfolio investment by offering expert consultation and vetting services. Our team ensures that vetted properties align with clients\' investment goals, verifying property availability and expected completion dates. <br /><br /> We provide flexible payment plans and confirm that payment terms adhere to the specific property type, ensuring a seamless investment process.'
-  },
+      image: '/7.jpg',
+      title: 'PORTFOLIO INVESTMENT',
+      content: 'We guide clients through portfolio investment by offering expert consultation and vetting services. Our team ensures that vetted properties align with clients\' investment goals, verifying property availability and expected completion dates. <br /><br /> We provide flexible payment plans and confirm that payment terms adhere to the specific property type, ensuring a seamless investment process.'
+    },
+      {
+        image: '/6.jpg',
+        title: 'MORTGAGE AND FINANCIAL PARTNERSHIPS',
+        content: 'We cater to a diverse range of clients with varying investment needs. Whether you\'re looking to fund an off-plan project, require a bespoke installment payment plan, or need a mortgage or financial partner, BAUC International has you covered. Our experienced real estate team is here to guide you toward the best financial solutions for your property investments.'
+      },
 
 ];
 
