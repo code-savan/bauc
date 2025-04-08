@@ -14,7 +14,7 @@ export default function HeroSection() {
       />
       <div className="relative z-20 container mx-auto px-4 h-full flex items-center">
         <div className="max-w-3xl">
-          <h1 className="font-display-fair text-3xl sm:text-4xl md:text-5xl text-white/90 mb-4 sm:mb-6 md:mb-8 leading-tight">
+          <h1 className="font-display-fair text-3xl sm:text-4xl md:text-4xl text-white/90 mb-4 sm:mb-6 md:mb-8 leading-tight">
             Do you want to invest in Nigeria but Can&apos;t <strong>TRUST</strong> your <strong>FUNDS</strong> with <strong>RELATIVES</strong>, <strong>FRIENDS</strong>, or <strong>FAMILY MEMBERS</strong>?
           </h1>
           <p className="text-lg sm:text-xl md:text-xl text-white/90 mb-4 sm:mb-5 md:mb-6 font-inter">
