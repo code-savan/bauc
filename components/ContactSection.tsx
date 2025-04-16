@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Link2, Twitter, Instagram, Linkedin, User, Mail, MapPin, Phone, Loader2 } from "lucide-react"
 import { supabase } from '@/lib/supabaseClient'
 import { toast } from "sonner"
+import { sendFormSubmissionNotification } from '@/lib/notificationHelper'
 
 type FormData = {
   name: string;
@@ -56,6 +57,9 @@ export default function ContactSection() {
       ]);
 
       if (error) throw error;
+
+      // Send email notification
+      await sendFormSubmissionNotification('Contact Form', formData);
 
       toast.success("Your message has been sent successfully! We appreciate your feedback and will get back to you shortly.");
       // Reset form

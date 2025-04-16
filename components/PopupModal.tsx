@@ -5,6 +5,7 @@ import { X, Loader2, Leaf, User, Mail, Phone, MapPin, Briefcase, Calendar, Walle
 import { supabase } from '@/lib/supabaseClient'
 import { toast } from 'sonner'
 import { motion, AnimatePresence } from 'framer-motion'
+import { sendFormSubmissionNotification } from '@/lib/notificationHelper'
 
 const NIGERIAN_STATES = [
   "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno",
@@ -68,6 +69,9 @@ export default function PopupModal() {
       }]);
 
       if (error) throw error;
+
+      // Send email notification
+      await sendFormSubmissionNotification('Popup Interest Form', formData);
 
       toast.success("Thank you for your interest! We'll be in touch soon.");
       setIsOpen(false);
