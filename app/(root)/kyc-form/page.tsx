@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import { supabase } from '@/lib/supabaseClient'
 import { useToast } from '@/hooks/use-toast'
+import { sendFormSubmissionNotification } from '@/lib/notificationHelper'
 import {
   User, Phone, Mail, Building2, Globe, MapPin,
   Calendar, FileText, Upload, AlertTriangle, Loader2, X
@@ -357,6 +358,13 @@ export default function KYCForm() {
         });
 
       if (insertError) throw insertError;
+
+      // Send email notification
+      await sendFormSubmissionNotification('KYC Form', {
+        ...data,
+        documentation: uploadedFiles.documentation?.url || null,
+        verification: uploadedFiles.verification?.url || null,
+      });
 
       showToast('Success', 'Form submitted successfully!');
 

@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Email Notifications
+
+This project uses [Resend](https://resend.com) for sending email notifications from form submissions. Follow these steps to set up:
+
+1. Sign up for a free Resend account at https://resend.com
+2. Verify your domain or use the Resend-provided test domain
+3. Get your API key from the Resend dashboard
+4. Add your API key to the `.env.local` file:
+
+```
+RESEND_API_KEY=your_resend_api_key_here
+EMAIL_FROM=noreply@yourdomain.com
+```
+
+The following form submissions will trigger email notifications to the configured recipients:
+- Expression of Interest form
+- KYC Form
+- Contact Form
+- Popup Modal Form

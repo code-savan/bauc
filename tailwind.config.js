@@ -10,7 +10,7 @@ module.exports = {
   	extend: {
   		fontFamily: {
   			'display-fair': [
-  				'Space Mono',
+  				'Inter',
   				'sans-serif'
   			],
   			'space-mono': [

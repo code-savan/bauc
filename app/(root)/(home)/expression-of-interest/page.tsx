@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import { Building2, User, MapPin, BriefcaseIcon, HomeIcon, Loader2 } from 'lucide-react';
+import { sendFormSubmissionNotification } from '@/lib/notificationHelper';
 
 type FormData = {
   firstName: string;
@@ -88,6 +89,9 @@ const EOIPage = () => {
       ]);
 
       if (error) throw error;
+
+      // Send email notification
+      await sendFormSubmissionNotification('Expression of Interest', data);
 
       toast.success("Thank you! Your expression of interest has been submitted successfully.");
       reset();
