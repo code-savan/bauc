@@ -99,6 +99,38 @@ function generateEmailContent(params: NotificationEmailParams): string {
   `;
 }
 
+// Generate plain text content
+function generatePlainTextContent(params: NotificationEmailParams): string {
+  const { formType, formData } = params;
+  let plainText = `New Form Submission - ${formType}\n\n`;
+  plainText += `A new form submission has been received from ${formData.email || formData.name || 'a user'}.\n\n`;
+  plainText += `Form Data:\n`;
+
+  for (const [key, value] of Object.entries(formData)) {
+    if (value === null || value === undefined || value === '') continue;
+
+    if (value instanceof File || (typeof value === 'object' && value !== null && 'file' in value)) {
+      continue;
+    }
+
+    if (Array.isArray(value)) {
+      plainText += `${formatKey(key)}: ${value.join(', ')}\n`;
+      continue;
+    }
+
+    if (typeof value === 'object' && value !== null) {
+      if ('url' in value && typeof value.url === 'string') continue;
+      plainText += `${formatKey(key)}: ${JSON.stringify(value)}\n`;
+      continue;
+    }
+
+    plainText += `${formatKey(key)}: ${value}\n`;
+  }
+
+  plainText += `\nThis is an automated email from the BAUC International website.`;
+  return plainText;
+}
+
 // Send notification email
 export async function sendNotificationEmail(params: NotificationEmailParams): Promise<boolean> {
   // Initialize Resend with API key
@@ -116,6 +148,7 @@ export async function sendNotificationEmail(params: NotificationEmailParams): Pr
       to: to,
       subject: subject,
       html: generateEmailContent(params),
+      text: generatePlainTextContent(params),
       replyTo: replyTo,
     });
 
