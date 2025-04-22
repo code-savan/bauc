@@ -23,7 +23,7 @@ export default function Header() {
     { href: "/", label: "Home", icon: <Home className="w-5 h-5" /> },
     { href: "/about", label: "About Us", icon: <Info className="w-5 h-5" /> },
     { href: "/vetted-properties", label: "Vetted Properties", icon: <Building2 className="w-5 h-5" /> },
-    { href: "/developers", label: "Developers", icon: <Users className="w-5 h-5" /> },
+    // { href: "/developers", label: "Developers", icon: <Users className="w-5 h-5" /> },
     { href: "/blogs", label: "Blogs", icon: <BookOpen className="w-5 h-5" /> },
     { href: "/events", label: "Events", icon: <Calendar className="w-5 h-5" /> },
     { href: "/expression-of-interest", label: "Expression of Interest", icon: <FileText className="w-5 h-5" /> },
@@ -31,7 +31,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full relative">
+    <header className="w-full relative md:h-[137px]">
       {/* Top Bar */}
       <div className="bg-black py-2">
         <div className="container mx-auto px-4 flex justify-between items-center text-sm">
@@ -51,7 +51,7 @@ export default function Header() {
 
       {/* Main Header */}
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center ">
           <Link href="/" className="flex items-center pb-2 md:pb-0">
             {/* <span className="text-2xl font-bold text-green-600">BAUC International</span> */}
             <Image src={"/logo.png"} alt='logo' className='w-[120px] md:w-[200px]' width={200} height={200} />
