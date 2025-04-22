@@ -20,11 +20,11 @@ const teamMembers: TeamMember[] = [
     title: 'Managing Director',
     image: '/collins.png'
   },
-  {
-    name: 'Sandra Marcus',
-    title: 'Operations Manager',
-    image: '/sandra.png'
-  },
+//   {
+//     name: 'Sandra Marcus',
+//     title: 'Operations Manager',
+//     image: '/sandra.png'
+//   },
   {
     name: 'Hope Gregory',
     title: 'Group HR/Admin',

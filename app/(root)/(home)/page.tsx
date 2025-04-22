@@ -4,6 +4,7 @@ import Services from './components/Services';
 import WhyInvestSection from './components/WhyInvestSection';
 import TeamCarousel from './components/TeamCarousel';
 import CEOAddress from './components/CEOAddress';
+import InvestmentJourney from './components/InvestmentJourney';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <CEOAddress />
       <Services />
       <WhyInvestSection />
+      <InvestmentJourney />
       <TeamCarousel />
     </main>
   );

@@ -12,7 +12,8 @@ import {
   Calendar,
   FileText,
   Contact,
-  X
+  X,
+  Info
 } from 'lucide-react';
 
 export default function Header() {
@@ -20,6 +21,7 @@ export default function Header() {
 
   const navLinks = [
     { href: "/", label: "Home", icon: <Home className="w-5 h-5" /> },
+    { href: "/about", label: "About Us", icon: <Info className="w-5 h-5" /> },
     { href: "/vetted-properties", label: "Vetted Properties", icon: <Building2 className="w-5 h-5" /> },
     { href: "/developers", label: "Developers", icon: <Users className="w-5 h-5" /> },
     { href: "/blogs", label: "Blogs", icon: <BookOpen className="w-5 h-5" /> },
