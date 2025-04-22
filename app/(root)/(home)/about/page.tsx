@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <main>
       {/* Modern Hero Banner with Centered Content */}
-      <section className="relative h-[65vh] bg-gray-900 flex items-center justify-center overflow-hidden">
+      <section className="relative h-[480px] bg-gray-900 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero.jpg"
@@ -21,70 +21,63 @@ export default function AboutPage() {
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="max-w-3xl mx-auto">
-            <h1 className="font-serif text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight">
+            <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-2 md:mb-3 tracking-tight">
               <span className="text-white opacity-90">About</span>{" "}
               <span className="text-green-400">BAUC</span>
             </h1>
 
-            <div className="w-24 h-0.5 bg-green-400 mx-auto mb-6"></div>
+            <div className="w-16 md:w-24 h-0.5 bg-green-400/60 mx-auto mb-4 md:mb-6"></div>
 
-            <p className="text-xl md:text-2xl text-white/80 font-light mb-8 leading-relaxed">
+            <p className="text-base md:text-2xl text-white/80 font-light mb-6 md:mb-8 leading-relaxed max-w-xl mx-auto">
               Your trusted partner in Nigerian real estate investment
             </p>
 
             {/* Stats with Icons - More Compact */}
-            <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
+            <div className="grid grid-cols-3 gap-2 md:gap-4 mt-6 max-w-lg mx-auto">
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <span className="text-4xl font-bold text-white mb-0.5">15</span>
-                <span className="text-white/70 uppercase tracking-wider text-xs">Years Experience</span>
+                <span className="text-2xl md:text-4xl font-bold text-white mb-0.5">15</span>
+                <span className="text-white/70 uppercase tracking-wider text-[10px] md:text-xs">Years Experience</span>
               </div>
 
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                 </div>
-                <span className="text-4xl font-bold text-white mb-0.5">500+</span>
-                <span className="text-white/70 uppercase tracking-wider text-xs">Properties Vetted</span>
+                <span className="text-2xl md:text-4xl font-bold text-white mb-0.5">500+</span>
+                <span className="text-white/70 uppercase tracking-wider text-[10px] md:text-xs">Properties Vetted</span>
               </div>
 
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <span className="text-4xl font-bold text-white mb-0.5">1000+</span>
-                <span className="text-white/70 uppercase tracking-wider text-xs">Happy Clients</span>
+                <span className="text-2xl md:text-4xl font-bold text-white mb-0.5">1000+</span>
+                <span className="text-white/70 uppercase tracking-wider text-[10px] md:text-xs">Happy Clients</span>
               </div>
             </div>
 
             {/* CTA Button - More Refined */}
-            <div className="mt-8">
+            <div className="mt-6 md:mt-8">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-green-500/90 hover:bg-green-500 text-white px-6 py-3 rounded-full text-base font-medium transition-all transform hover:scale-105"
+                className="inline-flex items-center gap-1.5 md:gap-2 bg-green-500/90 hover:bg-green-500 text-white px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-medium transition-all transform hover:scale-105"
               >
                 Start Your Investment Journey
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 md:h-4 md:w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Bottom wave effect - More Subtle */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 z-10">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-full">
-            <path fill="#ffffff" fillOpacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-          </svg>
         </div>
       </section>
 
@@ -104,42 +97,42 @@ export default function AboutPage() {
       </section>
 
       {/* Company Stats & Info in Modern Cards */}
-      <section className="py-16 bg-gray-50/80">
+      <section className="py-8 md:py-16 bg-gray-50/80">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
             {/* Years of Excellence */}
-            <div className="bg-white p-8 rounded-lg hover:shadow-sm transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-white p-5 md:p-8 rounded-lg hover:shadow-sm transition-shadow duration-300">
+              <div className="flex items-start md:items-center mb-2 md:mb-4">
+                <div className="w-8 h-8 md:w-12 md:h-12 bg-green-50 rounded-full flex items-center justify-center mr-3 md:mr-4 mt-1 md:mt-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-serif">
+                <h3 className="text-lg md:text-2xl font-serif">
                   <span className="text-green-600 font-medium">15 Years</span> of Excellence
                 </h3>
               </div>
-              <div className="pl-16">
-                <p className="text-gray-600 text-sm leading-relaxed">
+              <div className="pl-11 md:pl-16">
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                   For over 15 years, we have successfully helped clients navigate the complexities of real estate investment, ensuring they achieve their property portfolio goals seamlessly.
                 </p>
               </div>
             </div>
 
             {/* Tailored Investment Solutions */}
-            <div className="bg-white p-8 rounded-lg hover:shadow-sm transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-white p-5 md:p-8 rounded-lg hover:shadow-sm transition-shadow duration-300">
+              <div className="flex items-start md:items-center mb-2 md:mb-4">
+                <div className="w-8 h-8 md:w-12 md:h-12 bg-green-50 rounded-full flex items-center justify-center mr-3 md:mr-4 mt-1 md:mt-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-serif">
+                <h3 className="text-lg md:text-2xl font-serif">
                   Tailored <span className="text-green-600 font-medium">Investment</span> Solutions
                 </h3>
               </div>
-              <div className="pl-16">
-                <p className="text-gray-600 text-sm leading-relaxed">
+              <div className="pl-11 md:pl-16">
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                   We work closely with each client, understanding their unique investment objectives and matching them with the right real estate opportunities that align with their goals.
                 </p>
               </div>
