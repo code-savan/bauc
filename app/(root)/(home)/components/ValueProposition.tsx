@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const fadeInUp = {
@@ -12,7 +11,7 @@ const fadeInUp = {
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.15
     }
   }
 };
@@ -27,84 +26,103 @@ export default function ValueProposition() {
         viewport={{ once: true, margin: "-100px" }}
         variants={staggerContainer}
       >
-        <motion.div
-          variants={fadeInUp}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        {/* Header Section */}
+        <motion.div variants={fadeInUp} className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Secure Your Real Estate Investment<br />
             in Nigeria with Confidence!
           </h1>
-          <div className="bg-green-600 text-white py-3 px-6 inline-block rounded-full text-lg font-medium mb-8">
-            Worried about Investing in Nigeria?
+          <div className="bg-green-600 text-white py-3 px-10 inline-block transform -skew-x-12 text-lg font-medium mb-8 relative">
+            <span className="inline-block transform skew-x-12">Worried about Investing in Nigeria?</span>
           </div>
         </motion.div>
 
-        <motion.div
-          variants={fadeInUp}
-          className="max-w-4xl mx-auto space-y-6 text-lg text-center mb-12"
-        >
+        {/* Explanatory Text */}
+        <motion.div variants={fadeInUp} className="max-w-4xl mx-auto space-y-6 text-lg text-center mb-16">
           <p className="font-medium text-gray-800">
-            Do you dream of owning property in Nigeria but hesitate to TRUST your FUNDS with RELATIVES, FRIENDS, or FAMILY MEMBERS
+            Do you dream of owning property in Nigeria but hesitate to <span className="font-bold">trust</span> your <span className="font-bold">funds</span> with <span className="font-bold">relatives</span>, <span className="font-bold">friends</span>, or <span className="font-bold">family members</span>
           </p>
           <p className="font-medium text-gray-800">
-            Struggling to find a RELIABLE, CREDIBLE, and TRUSTWORTHY developer for your REAL ESTATE investment?
+            Struggling to find a <span className="font-bold">reliable</span>, <span className="font-bold">credible</span>, and <span className="font-bold">trustworthy</span> developer for your <span className="font-bold">real estate</span> investment?
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-700">
             At BAUC INTERNATIONAL, we take the guesswork out of property investments. We thoroughly vet real estate portfolios, ensuring your hard-earned money is invested wisely and securely.
           </p>
         </motion.div>
 
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        >
-          {[
-            {
-              image: '/1.webp',
-              title: 'In-depth due diligence to protect your investment',
-              number: '1'
-            },
-            {
-              image: '/2.jpg',
-              title: 'Transparent and unbiased property insights',
-              number: '2'
-            },
-            {
-              image: '/3.jpg',
-              title: 'Direct access to the most reputable developers',
-              number: '3'
-            },
-            {
-              image: '/4.png',
-              title: 'Peace of mind knowing your investment is in expert hands',
-              number: '4'
-            }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              variants={fadeInUp}
-              className="relative group"
-            >
-              <div className="relative h-[300px] overflow-hidden rounded-lg">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">
-                      {item.number}
-                    </div>
-                    <h3 className="text-white text-xl font-medium">{item.title}</h3>
-                  </div>
+        {/* Feature Grid - Using bordered boxes instead of images */}
+        <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* Feature 1 */}
+          <div className="group border border-gray-200 rounded-none p-8 hover:border-green-500 transition-colors duration-300 hover:shadow-sm">
+            <div className="flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                <div className="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                  1
                 </div>
+                <h3 className="text-xl font-semibold text-gray-800">In-depth due diligence</h3>
               </div>
-            </motion.div>
-          ))}
+              <p className="text-gray-600 mt-2">
+                We conduct thorough investigations and analysis of real estate opportunities to protect your investment from potential risks and ensure maximum returns.
+              </p>
+              <div className="mt-auto pt-4">
+                <div className="w-16 h-1 bg-green-600 rounded-none"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 2 */}
+          <div className="group border border-gray-200 rounded-none p-8 hover:border-green-500 transition-colors duration-300 hover:shadow-sm">
+            <div className="flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                <div className="bg-gray-800 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                  2
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800">Transparent property insights</h3>
+              </div>
+              <p className="text-gray-600 mt-2">
+                We provide clear, unbiased information about property markets, trends, and opportunities, enabling you to make informed investment decisions.
+              </p>
+              <div className="mt-auto pt-4">
+                <div className="w-16 h-1 bg-gray-800 rounded-none"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="group border border-gray-200 rounded-none p-8 hover:border-green-500 transition-colors duration-300 hover:shadow-sm">
+            <div className="flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                <div className="bg-gray-800 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                  3
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800">Access to reputable developers</h3>
+              </div>
+              <p className="text-gray-600 mt-2">
+                We connect you directly with Nigeria&apos;s most reliable and proven real estate developers, eliminating the need to rely on uncertain intermediaries.
+              </p>
+              <div className="mt-auto pt-4">
+                <div className="w-16 h-1 bg-gray-800 rounded-none"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 4 */}
+          <div className="group border border-gray-200 rounded-none p-8 hover:border-green-500 transition-colors duration-300 hover:shadow-sm">
+            <div className="flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                <div className="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 shadow-sm">
+                  4
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800">Peace of mind guarantee</h3>
+              </div>
+              <p className="text-gray-600 mt-2">
+                Our experienced team handles every aspect of your investment journey, providing expert oversight and management for complete peace of mind.
+              </p>
+              <div className="mt-auto pt-4">
+                <div className="w-16 h-1 bg-green-600 rounded-none"></div>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </section>
