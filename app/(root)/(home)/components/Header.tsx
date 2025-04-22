@@ -52,9 +52,9 @@ export default function Header() {
       {/* Main Header */}
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center pb-2 md:pb-0">
             {/* <span className="text-2xl font-bold text-green-600">BAUC International</span> */}
-            <Image src={"/logo.png"} alt='logo' width={200} height={200} />
+            <Image src={"/logo.png"} alt='logo' className='w-[120px] md:w-[200px]' width={200} height={200} />
           </Link>
 
           <nav className="hidden md:flex space-x-6">

@@ -10,7 +10,7 @@ export default function CEOAddress() {
 
 
   return (
-    <section className="py-16 bg-black h-screen">
+    <section className="py-16 bg-black md:h-screen h-fit">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-white">Message from Our CEO</h2>
         <div className="max-w-4xl mx-auto relative bg-black rounded-lg overflow-hidden">

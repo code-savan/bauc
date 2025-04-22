@@ -68,7 +68,7 @@ export default function WhyInvestSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="font-display-fair text-4xl md:text-5xl mb-12">Why Invest in Nigeria Real Estate</h2>
-            <div className="space-y-6 md:pl-4">
+            <div className="space-y-6 pl-4">
               {investmentReasons.map((reason) => (
                 <div
                   key={reason.id}

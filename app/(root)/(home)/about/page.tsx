@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <main>
       {/* Modern Hero Banner with Centered Content */}
-      <section className="relative h-[480px] bg-gray-900 flex items-center justify-center overflow-hidden">
+      <section className="relative md:h-[600px] h-[480px] bg-gray-900 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero.jpg"
@@ -21,46 +21,46 @@ export default function AboutPage() {
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="max-w-3xl mx-auto">
-            <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-2 md:mb-3 tracking-tight">
+            <h1 className="font-serif text-4xl md:text-7xl font-bold text-white mb-2 md:mb-1 tracking-tight">
               <span className="text-white opacity-90">About</span>{" "}
               <span className="text-green-400">BAUC</span>
             </h1>
 
-            <div className="w-16 md:w-24 h-0.5 bg-green-400/60 mx-auto mb-4 md:mb-6"></div>
+            <div className="w-16 md:w-24 h-0.5 bg-green-400/60 mx-auto mb-1 md:mb-3"></div>
 
-            <p className="text-base md:text-2xl text-white/80 font-light mb-6 md:mb-8 leading-relaxed max-w-xl mx-auto">
+            <p className="text-base md:text-xl font-medium text-white/80 mb-6 md:mb-8 leading-relaxed max-w-xl mx-auto">
               Your trusted partner in Nigerian real estate investment
             </p>
 
             {/* Stats with Icons - More Compact */}
             <div className="grid grid-cols-3 gap-2 md:gap-4 mt-6 max-w-lg mx-auto">
               <div className="flex flex-col items-center">
-                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <span className="text-2xl md:text-4xl font-bold text-white mb-0.5">15</span>
+                <span className="text-2xl md:text-3xl font-bold text-white mb-0.5">15</span>
                 <span className="text-white/70 uppercase tracking-wider text-[10px] md:text-xs">Years Experience</span>
               </div>
 
               <div className="flex flex-col items-center">
-                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                 </div>
-                <span className="text-2xl md:text-4xl font-bold text-white mb-0.5">500+</span>
+                <span className="text-2xl md:text-3xl font-bold text-white mb-0.5">500+</span>
                 <span className="text-white/70 uppercase tracking-wider text-[10px] md:text-xs">Properties Vetted</span>
               </div>
 
               <div className="flex flex-col items-center">
-                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-1.5 md:mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <span className="text-2xl md:text-4xl font-bold text-white mb-0.5">1000+</span>
+                <span className="text-2xl md:text-3xl font-bold text-white mb-0.5">1000+</span>
                 <span className="text-white/70 uppercase tracking-wider text-[10px] md:text-xs">Happy Clients</span>
               </div>
             </div>
