@@ -55,7 +55,7 @@ export default function HeroSection() {
                 Get started
               </motion.button>
             </Link>
-            <Link href="/contact" className="inline-block">
+            <Link href="https://calendly.com/vet-baucinternational/60min" className="inline-block">
               <motion.button
                 whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                 whileTap={{ scale: 0.98 }}

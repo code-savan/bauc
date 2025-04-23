@@ -393,6 +393,31 @@ const Services = () => {
             </div>
           </div>
         </div>
+
+        {/* Download Buttons Section */}
+        <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
+          <a
+            href="/BAUCInternationalNewsletterFebruary2025Edition.pdf"
+            download
+            className="flex items-center gap-3 bg-white border border-green-600 text-green-700 px-6 py-3 rounded hover:bg-green-50 transition-colors duration-300 shadow-sm group"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span className="font-semibold">Download Newsletter</span>
+          </a>
+
+          <a
+            href="/BAUCInternationalBrochure.pdf"
+            download
+            className="flex items-center gap-3 bg-green-700 text-white px-6 py-3 rounded hover:bg-green-800 transition-colors duration-300 shadow-sm group"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span className="font-semibold">Download Company Brochure</span>
+          </a>
+        </div>
       </div>
     </section>
   );
