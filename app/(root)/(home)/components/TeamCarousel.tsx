@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 interface TeamMember {
@@ -48,15 +48,66 @@ const teamMembers: TeamMember[] = [
 ];
 
 export default function TeamCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollAmount = 300;
+  const cardWidth = 288; // 72*4 = 288px (w-72 + gap)
 
-  const scroll = (direction: 'left' | 'right') => {
+  // Function to check scroll position and update state
+  const checkScrollPosition = () => {
     if (containerRef.current) {
-      const scrollAmount = direction === 'left' ? -400 : 400;
-      containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      setIsAtStart(scrollLeft === 0);
+      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 10); // 10px buffer for rounding
     }
   };
+
+  // Add scroll event listener to the container
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScrollPosition);
+      // Initial check
+      checkScrollPosition();
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', checkScrollPosition);
+      }
+    };
+  }, []);
+
+  // Create a continuous scroll effect by handling edge cases
+  const scroll = (direction: 'left' | 'right') => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+
+      // For continuous scrolling, if at the edge, jump to the opposite edge
+      if (direction === 'right' && isAtEnd) {
+        container.scrollTo({ left: 0, behavior: 'auto' });
+        setTimeout(() => {
+          container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        }, 50);
+      } else if (direction === 'left' && isAtStart) {
+        container.scrollTo({ left: scrollWidth - clientWidth, behavior: 'auto' });
+        setTimeout(() => {
+          container.scrollTo({ left: scrollWidth - clientWidth - scrollAmount, behavior: 'smooth' });
+        }, 50);
+      } else {
+        // Normal scrolling
+        const newScrollPosition = direction === 'left'
+          ? scrollLeft - scrollAmount
+          : scrollLeft + scrollAmount;
+        container.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Duplicate team members to create continuous scrolling effect
+  const displayMembers = [...teamMembers, ...teamMembers, ...teamMembers];
 
   return (
     <section className="py-20 bg-gray-50">
@@ -66,6 +117,7 @@ export default function TeamCarousel() {
           <button
             onClick={() => scroll('left')}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors"
+            aria-label="Scroll left"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -73,12 +125,13 @@ export default function TeamCarousel() {
           </button>
           <div
             ref={containerRef}
-            className="flex gap-8 overflow-x-hidden scroll-smooth px-4"
+            className="flex gap-8 overflow-x-auto scroll-smooth px-4 scrollbar-hide snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {teamMembers.map((member, index) => (
+            {displayMembers.map((member, index) => (
               <div
-                key={index}
-                className="flex-none w-72 group"
+                key={`${member.name}-${index}`}
+                className="flex-none w-72 group snap-center"
               >
                 <div className="relative h-80 mb-4 overflow-hidden rounded-lg">
                   <Image
@@ -99,6 +152,7 @@ export default function TeamCarousel() {
           <button
             onClick={() => scroll('right')}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors"
+            aria-label="Scroll right"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -106,6 +160,19 @@ export default function TeamCarousel() {
           </button>
         </div>
       </div>
+
+      <style jsx global>{`
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+      `}</style>
     </section>
   );
 }

@@ -28,17 +28,17 @@ export default function ValueProposition() {
       >
         {/* Header Section */}
         <motion.div variants={fadeInUp} className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10">
             Secure Your Real Estate Investment<br />
             in Nigeria with Confidence!
           </h1>
-          <div className="bg-green-600 text-white py-3 px-10 inline-block transform -skew-x-12 text-lg font-medium mb-8 relative">
+          <div className="bg-green-600 text-white py-3 px-10 inline-block transform -skew-x-12 text-lg font-medium mb-0 relative">
             <span className="inline-block transform skew-x-12">Worried about Investing in Nigeria?</span>
           </div>
         </motion.div>
 
         {/* Explanatory Text */}
-        <motion.div variants={fadeInUp} className="max-w-4xl mx-auto space-y-6 text-lg text-center mb-16">
+        <motion.div variants={fadeInUp} className="max-w-4xl mx-auto space-y-6 text-lg text-center mb-12">
           <p className="font-medium text-gray-800">
             Do you dream of owning property in Nigeria but hesitate to <span className="font-bold">trust</span> your <span className="font-bold">funds</span> with <span className="font-bold">relatives</span>, <span className="font-bold">friends</span>, or <span className="font-bold">family members</span>
           </p>
