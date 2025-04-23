@@ -98,10 +98,10 @@ export default function HeroSection() {
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex -space-x-2">
                   {[
-                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-                    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-                    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
+                    "https://images.pexels.com/photos/9301468/pexels-photo-9301468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=120&dpr=2",
+                    "https://images.pexels.com/photos/2379429/pexels-photo-2379429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=120&dpr=2",
+                    "https://images.pexels.com/photos/7658276/pexels-photo-7658276.jpeg?auto=compress&cs=tinysrgb&w=1260&h=120&dpr=2",
+                    "https://images.pexels.com/photos/6584748/pexels-photo-6584748.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   ].map((src, index) => (
                     <motion.div
                       key={src}
@@ -114,7 +114,7 @@ export default function HeroSection() {
                         src={src}
                         alt="User"
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     </motion.div>
                   ))}

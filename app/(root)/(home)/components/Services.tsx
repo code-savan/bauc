@@ -189,40 +189,29 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
           {/* Row 1 - First Three Cards */}
-          {/* Portfolio Vetting - Featured Card with Image Background */}
-          <div className="md:col-span-4 h-[420px] md:h-[450px] relative group overflow-hidden">
-            <div className="absolute inset-0 w-full h-full">
-              <Image
-                src={services.portfolioVetting.image}
-                alt={services.portfolioVetting.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-950/95 via-green-900/90 to-green-900/80"></div>
-            </div>
-            <div className="absolute inset-0 p-8 flex flex-col text-white z-10">
-              <div className="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center mb-4">
-                <div className="text-white">
-                  {services.portfolioVetting.icon}
-                </div>
+          {/* Portfolio Vetting */}
+          <div className="md:col-span-4 h-[420px] md:h-[450px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-t-4 border-green-600">
+            <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
+              <div className="text-green-600">
+                {services.portfolioVetting.icon}
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-white drop-shadow-sm">{services.portfolioVetting.title}</h3>
-              <p className="text-white mb-4 text-sm font-medium drop-shadow-sm">{services.portfolioVetting.content}</p>
-              <ul className="space-y-1">
-                {services.portfolioVetting.bulletPoints.map((point, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-green-300 inline-block mt-1">
-                      <ServiceBulletIcon type="vetting" />
-                    </span>
-                    <span className="text-white font-medium drop-shadow-sm inline-block">{point}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+            <h3 className="text-2xl font-semibold mb-3 text-gray-800">{services.portfolioVetting.title}</h3>
+            <p className="text-gray-600 mb-4 text-sm">{services.portfolioVetting.content}</p>
+            <ul className="space-y-1">
+              {services.portfolioVetting.bulletPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm">
+                  <span className="text-green-600 inline-block mt-1">
+                    <ServiceBulletIcon type="vetting" />
+                  </span>
+                  <span className="text-gray-700 inline-block">{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Portfolio Development - Card with White Background and Green Border Bottom */}
-          <div className="md:col-span-4 h-[420px] md:h-[450px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-b-4 border-green-600">
+          <div className="md:col-span-4 h-[420px] md:h-[450px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-t-4 border-green-600">
             <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
               <div className="text-green-600">
                 {services.portfolioDevelopment.icon}
@@ -242,41 +231,30 @@ const Services = () => {
             </ul>
           </div>
 
-          {/* Legal Services - Card with Image Background and Overlay */}
-          <div className="md:col-span-4 h-[420px] md:h-[450px] relative group overflow-hidden">
-            <div className="absolute inset-0 w-full h-full">
-              <Image
-                src={services.legalServices.image}
-                alt={services.legalServices.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-green-950/95 via-green-900/90 to-green-900/85"></div>
-            </div>
-            <div className="absolute inset-0 p-8 flex flex-col text-white z-10">
-              <div className="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center mb-4">
-                <div className="text-white">
-                  {services.legalServices.icon}
-                </div>
+          {/* Legal Services */}
+          <div className="md:col-span-4 h-[420px] md:h-[450px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-t-4 border-green-600">
+            <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
+              <div className="text-green-600">
+                {services.legalServices.icon}
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-white drop-shadow-sm">{services.legalServices.title}</h3>
-              <p className="text-white mb-4 text-sm font-medium drop-shadow-sm">{services.legalServices.content}</p>
-              <ul className="space-y-1">
-                {services.legalServices.bulletPoints.map((point, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-green-300 inline-block mt-1">
-                      <ServiceBulletIcon type="legal" />
-                    </span>
-                    <span className="text-white font-medium drop-shadow-sm inline-block">{point}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+            <h3 className="text-2xl font-semibold mb-3 text-gray-800">{services.legalServices.title}</h3>
+            <p className="text-gray-600 mb-4 text-sm">{services.legalServices.content}</p>
+            <ul className="space-y-1">
+              {services.legalServices.bulletPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm">
+                  <span className="text-green-600 inline-block mt-1">
+                    <ServiceBulletIcon type="legal" />
+                  </span>
+                  <span className="text-gray-700 inline-block">{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Row 2 */}
           {/* Portfolio Investment - Card with Subtle Border */}
-          <div className="md:col-span-4 h-[380px] bg-white p-8 flex flex-col border-t-4 border-green-600 hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10">
+          <div className="md:col-span-4 h-[380px] bg-white p-8 flex flex-col border-l-4 border-green-600 hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10">
             <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
               <div className="text-green-600">
                 {services.portfolioInvestment.icon}
@@ -296,101 +274,68 @@ const Services = () => {
             </ul>
           </div>
 
-          {/* Portfolio Management - Large Card with Image Background */}
-          <div className="md:col-span-8 h-[380px] relative group overflow-hidden">
-            <div className="absolute inset-0 w-full h-full">
-              <Image
-                src={services.portfolioManagement.image}
-                alt={services.portfolioManagement.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-transparent"></div>
-            </div>
-            <div className="absolute inset-0 p-8 md:max-w-[60%] flex flex-col text-white z-10">
-              <div className="w-10 h-10 rounded-full bg-gray-800/80 flex items-center justify-center mb-4">
-                <div className="text-white">
-                  {services.portfolioManagement.icon}
-                </div>
+          {/* Portfolio Management */}
+          <div className="md:col-span-8 h-[380px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-r-4 border-green-600">
+            <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
+              <div className="text-green-600">
+                {services.portfolioManagement.icon}
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-white drop-shadow-sm">{services.portfolioManagement.title}</h3>
-              <p className="text-white mb-4 text-sm font-medium drop-shadow-sm">{services.portfolioManagement.content}</p>
-              <ul className="space-y-1">
-                {services.portfolioManagement.bulletPoints.map((point, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-green-300 inline-block mt-1">
-                      <ServiceBulletIcon type="management" />
-                    </span>
-                    <span className="text-white font-medium drop-shadow-sm inline-block">{point}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+            <h3 className="text-2xl font-semibold mb-3 text-gray-800">{services.portfolioManagement.title}</h3>
+            <p className="text-gray-600 mb-4 text-sm">{services.portfolioManagement.content}</p>
+            <ul className="space-y-1">
+              {services.portfolioManagement.bulletPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm">
+                  <span className="text-green-600 inline-block mt-1">
+                    <ServiceBulletIcon type="management" />
+                  </span>
+                  <span className="text-gray-700 inline-block">{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Row 3 */}
-          {/* Portfolio Supervision - Full Width Content Aligned Left */}
-          <div className="md:col-span-8 h-[380px] relative group overflow-hidden">
-            <div className="absolute inset-0 w-full h-full">
-              <Image
-                src={services.portfolioSupervision.image}
-                alt={services.portfolioSupervision.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/80 to-black/60"></div>
-            </div>
-            <div className="absolute inset-0 p-8 flex flex-col text-white z-10">
-              <div className="w-10 h-10 rounded-full bg-gray-800/80 flex items-center justify-center mb-4">
-                <div className="text-white">
-                  {services.portfolioSupervision.icon}
-                </div>
+          {/* Portfolio Supervision */}
+          <div className="md:col-span-8 h-[380px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-l-4 border-green-600">
+            <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
+              <div className="text-green-600">
+                {services.portfolioSupervision.icon}
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-white drop-shadow-sm">{services.portfolioSupervision.title}</h3>
-              <p className="text-white mb-4 text-sm font-medium drop-shadow-sm">{services.portfolioSupervision.content}</p>
-              <ul className="space-y-1">
-                {services.portfolioSupervision.bulletPoints.map((point, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-green-300 inline-block mt-1">
-                      <ServiceBulletIcon type="supervision" />
-                    </span>
-                    <span className="text-white font-medium drop-shadow-sm inline-block">{point}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+            <h3 className="text-2xl font-semibold mb-3 text-gray-800">{services.portfolioSupervision.title}</h3>
+            <p className="text-gray-600 mb-4 text-sm">{services.portfolioSupervision.content}</p>
+            <ul className="space-y-1">
+              {services.portfolioSupervision.bulletPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm">
+                  <span className="text-green-600 inline-block mt-1">
+                    <ServiceBulletIcon type="supervision" />
+                  </span>
+                  <span className="text-gray-700 inline-block">{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Mortgage & Financial - Card with Glass Effect */}
-          <div className="md:col-span-4 h-[380px] relative group overflow-hidden">
-            <div className="absolute inset-0 w-full h-full">
-              <Image
-                src={services.mortgageFinancial.image}
-                alt={services.mortgageFinancial.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-950 via-green-900/90 to-green-900/80 backdrop-blur-sm"></div>
-            </div>
-            <div className="absolute inset-0 p-8 flex flex-col text-white z-10">
-              <div className="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center mb-4">
-                <div className="text-white">
-                  {services.mortgageFinancial.icon}
-                </div>
+          {/* Mortgage & Financial */}
+          <div className="md:col-span-4 h-[380px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-b-4 border-green-600">
+            <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
+              <div className="text-green-600">
+                {services.mortgageFinancial.icon}
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-white drop-shadow-sm">{services.mortgageFinancial.title}</h3>
-              <p className="text-white mb-4 text-sm font-medium drop-shadow-sm">{services.mortgageFinancial.content}</p>
-              <ul className="space-y-1">
-                {services.mortgageFinancial.bulletPoints.map((point, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-green-300 inline-block mt-1">
-                      <ServiceBulletIcon type="mortgage" />
-                    </span>
-                    <span className="text-white font-medium drop-shadow-sm inline-block">{point}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+            <h3 className="text-2xl font-semibold mb-3 text-gray-800">{services.mortgageFinancial.title}</h3>
+            <p className="text-gray-600 mb-4 text-sm">{services.mortgageFinancial.content}</p>
+            <ul className="space-y-1">
+              {services.mortgageFinancial.bulletPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm">
+                  <span className="text-green-600 inline-block mt-1">
+                    <ServiceBulletIcon type="mortgage" />
+                  </span>
+                  <span className="text-gray-700 inline-block">{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
