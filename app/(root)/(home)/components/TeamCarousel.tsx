@@ -22,7 +22,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Barr. Ali Ene',
-    title: 'Advisor/Legal Representative',
+    title: 'Investment Advisor',
     image: '/ene.png'
   },
   {
