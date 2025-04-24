@@ -38,7 +38,7 @@ const GoToTop = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-4 z-50 w-[50px] h-[50px] rounded-md bg-green-700 flex items-center justify-center cursor-pointer shadow-lg hover:bg-green-800 transition-all duration-300"
+          className="fixed bottom-4 right-4 z-50 w-[35px] h-[35px] rounded-md bg-green-700 flex items-center justify-center cursor-pointer shadow-lg hover:bg-green-800 transition-all duration-300"
           aria-label="Go to top"
         >
           <ChevronUp color='white' size={18} />
