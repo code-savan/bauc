@@ -8,6 +8,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import GoToTop from './components/GoToTop';
 import { Toaster } from "sonner";
 import PopupModal from '@/components/PopupModal';
+import { LoaderProvider } from './components/LoaderProvider';
 
 
 
@@ -28,12 +29,14 @@ export default function MainLayout({
   return (
     <html lang="en">
       <body className={``}>
-        <Header />
-        {children}
-        <WhatsAppButton />
-        <GoToTop />
-        <Footer />
-        <PopupModal />
+        <LoaderProvider>
+          <Header />
+          {children}
+          <WhatsAppButton />
+          <GoToTop />
+          <Footer />
+          <PopupModal />
+        </LoaderProvider>
         <Toaster />
       </body>
     </html>
