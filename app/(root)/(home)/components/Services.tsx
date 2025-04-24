@@ -343,7 +343,8 @@ const Services = () => {
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
           <a
             href="https://drive.google.com/file/d/1AnzJI0-L34ubP3gVKU4dwp7s8djJEuXv/view?usp=drive_link"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-3 bg-white border border-green-600 text-green-700 px-6 py-3 rounded hover:bg-green-50 transition-colors duration-300 shadow-sm group"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -354,7 +355,8 @@ const Services = () => {
 
           <a
             href="https://drive.google.com/file/d/1XcAbA18jpIfHU38AyoSXaiSzy3jo4BbK/view?usp=drive_link"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-3 bg-green-700 text-white px-6 py-3 rounded hover:bg-green-800 transition-colors duration-300 shadow-sm group"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
