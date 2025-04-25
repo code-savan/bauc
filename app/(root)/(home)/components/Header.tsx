@@ -23,7 +23,7 @@ export default function Header() {
     { href: "/", label: "Home", icon: <Home className="w-5 h-5" /> },
     { href: "/about", label: "About Us", icon: <Info className="w-5 h-5" /> },
     { href: "/vetted-properties", label: "Vetted Properties", icon: <Building2 className="w-5 h-5" /> },
-    // { href: "/developers", label: "Developers", icon: <Users className="w-5 h-5" /> },
+    { href: "/affiliate", label: "Affiliate", icon: <Users className="w-5 h-5" /> },
     { href: "/blogs", label: "Blogs", icon: <BookOpen className="w-5 h-5" /> },
     { href: "/events", label: "Events", icon: <Calendar className="w-5 h-5" /> },
     { href: "/expression-of-interest", label: "Expression of Interest", icon: <FileText className="w-5 h-5" /> },

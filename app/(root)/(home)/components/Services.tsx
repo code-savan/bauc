@@ -169,7 +169,7 @@ const services: Record<string, Service> = {
       'Securing reliable mortgage and financial partnerships.',
       'Expert financial guidance tailored to your investment needs.'
     ],
-    image: '/6.jpg',
+        image: '/6.jpg',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
         <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
@@ -181,7 +181,7 @@ const services: Record<string, Service> = {
 
 const Services = () => {
   return (
-    <section className="py-20 bg-gray-50">
+   <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="font-display-fair text-[20px] md:text-5xl text-center mb-16 font-bold md:font-normal">
           HOW WE HELP OUR CLIENT ACHIEVE THEIR REAL ESTATE INVESTMENT NEEDS
@@ -301,8 +301,8 @@ const Services = () => {
             <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mb-4">
               <div className="text-green-600">
                 {services.portfolioSupervision.icon}
-              </div>
-            </div>
+                   </div>
+                 </div>
             <h3 className="text-2xl font-semibold mb-3 text-gray-800">{services.portfolioSupervision.title}</h3>
             <p className="text-gray-600 mb-4 text-sm">{services.portfolioSupervision.content}</p>
             <ul className="space-y-1">
@@ -315,7 +315,7 @@ const Services = () => {
                 </li>
               ))}
             </ul>
-          </div>
+             </div>
 
           {/* Mortgage & Financial */}
           <div className="md:col-span-4 h-[380px] bg-white p-8 flex flex-col hover:shadow-lg hover:scale-[1.01] transition-all duration-500 hover:z-10 border-b-4 border-green-600">
@@ -336,8 +336,8 @@ const Services = () => {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
+             </div>
+           </div>
 
         {/* Download Buttons Section */}
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
@@ -349,7 +349,7 @@ const Services = () => {
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+               </svg>
             <span className="font-semibold">Download Newsletter</span>
           </a>
 
@@ -361,12 +361,12 @@ const Services = () => {
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+               </svg>
             <span className="font-semibold">Download Company Brochure</span>
           </a>
-        </div>
-      </div>
-    </section>
+           </div>
+         </div>
+       </section>
   );
 };
 
