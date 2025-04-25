@@ -176,7 +176,19 @@ export async function sendFormNotification(
   formType: string,
   formData: Record<string, any>
 ): Promise<boolean> {
-  const recipients = ['vet@baucinternational.com', 'collins@baucinternational.com'];
+  // Define recipients based on form type
+  let recipients = ['vet@baucinternational.com', 'collins@baucinternational.com'];
+
+  // Add events team email for event-related forms
+  if (formType.toLowerCase().includes('event') || formType.toLowerCase().includes('booking')) {
+    recipients.push('events@baucinternational.com');
+  }
+
+  // For affiliate program, ensure all stakeholders are notified
+  if (formType.toLowerCase().includes('affiliate')) {
+    recipients = ['vet@baucinternational.com', 'events@baucinternational.com', 'collins@baucinternational.com'];
+  }
+
   const replyTo = formData.email || undefined;
 
   return sendNotificationEmail({

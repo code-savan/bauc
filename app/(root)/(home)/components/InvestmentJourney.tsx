@@ -136,8 +136,8 @@ export default function InvestmentJourney() {
   return (
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-display-fair text-center mb-16 uppercase">
-          Your Investment Journey with <br /> BAUC International
+        <h2 className="text-2xl md:text-5xl font-display-fair text-center mb-16 uppercase">
+          Your Investment Journey with <br className='hidden md:block' /> BAUC International
         </h2>
 
         <div className="space-y-32">
@@ -151,7 +151,7 @@ export default function InvestmentJourney() {
                   <div className="flex flex-col space-y-8">
                     <div className="flex items-center">
                       <div className={`
-                        relative z-10 w-20 h-20 flex items-center justify-center text-white font-bold rounded-xl shadow-lg
+                        relative z-10 md:w-20 md:h-20 w-16 h-10 flex items-center justify-center text-white font-bold rounded-xl shadow-lg
                         ${colorScheme.bg}
                       `}>
                         <span className="text-2xl">{step.step}</span>

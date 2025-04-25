@@ -362,6 +362,21 @@ const AffiliateProgram = () => {
 
       console.log('Submitting to Supabase:', submissionData);
 
+      // Send email notification in parallel with database submission
+      const emailPromise = fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'Affiliate Program Application',
+          formData: {
+            ...submissionData,
+            marketingMethods: marketingMethodsArray.join(', '),
+          }
+        }),
+      });
+
       try {
         // Submit to Supabase
         const result = await supabase
@@ -373,6 +388,16 @@ const AffiliateProgram = () => {
 
         if (error) {
           throw error;
+        }
+
+        // Wait for email notification to complete
+        const emailResponse = await emailPromise;
+        const emailResult = await emailResponse.json();
+
+        if (!emailResponse.ok) {
+          console.warn('Email notification failed but database submission succeeded:', emailResult);
+        } else {
+          console.log('Email notification sent successfully:', emailResult);
         }
 
         // Show success message

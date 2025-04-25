@@ -27,8 +27,8 @@ export default function ValueProposition() {
         variants={staggerContainer}
       >
         {/* Header Section */}
-        <motion.div variants={fadeInUp} className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10">
+        <motion.div variants={fadeInUp} className="text-center md:mb-12 mb-6">
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold md:mb-10 mb-5">
             Secure Your Real Estate Investment<br />
             in Nigeria with Confidence!
           </h1>
@@ -38,7 +38,7 @@ export default function ValueProposition() {
         </motion.div>
 
         {/* Explanatory Text */}
-        <motion.div variants={fadeInUp} className="max-w-4xl mx-auto space-y-6 text-lg text-center mb-12">
+        <motion.div variants={fadeInUp} className="md:max-w-4xl w-full mx-auto md:space-y-6 space-y-3 text-lg text-center mb-12">
           <p className="font-medium text-gray-800">
             Do you dream of owning property in Nigeria but hesitate to <span className="font-bold">trust</span> your <span className="font-bold">funds</span> with <span className="font-bold">relatives</span>, <span className="font-bold">friends</span>, or <span className="font-bold">family members</span>
           </p>
