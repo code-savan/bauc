@@ -6,11 +6,11 @@ import GreenDivider from '@/app/components/GoldDivider';
 import PremiumCheckbox from '@/app/components/PremiumCheckbox';
 import PremiumTextarea from '@/app/components/PremiumTextarea';
 import Image from 'next/image';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 
 // Initialize Supabase client - with error handling
-let supabase;
+let supabase: SupabaseClient;
 try {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://lzabrdhnfsnulhtlpnln.supabase.co';
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6YWJyZGhuZnNudWxodGxwbmxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIyNDk2MTYsImV4cCI6MjAyNzgyNTYxNn0.yFn0rUS5W3WkE1tX2e6zM7nK7RN8bPD3HiQnDueMVe0';
@@ -29,7 +29,7 @@ try {
         return { error: { message: 'Database connection error' } };
       }
     })
-  };
+  } as unknown as SupabaseClient;
 }
 
 // For debugging
