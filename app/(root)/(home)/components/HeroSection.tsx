@@ -126,7 +126,7 @@ export default function HeroSection() {
                 transition={{ duration: 0.5, delay: 1.7 }}
                 className="text-white/80 text-sm"
               >
-                5000+ People have choosen our residential complex as their home
+                500+ People have choosen our residential complex as their home
               </motion.p>
             </motion.div>
           </motion.div>

@@ -30,12 +30,12 @@ export default function MainLayout({
     <html lang="en">
       <body className={``}>
         <LoaderProvider>
-          <Header />
-          {children}
-          <WhatsAppButton />
-          <GoToTop />
-          <Footer />
-          <PopupModal />
+        <Header />
+        {children}
+        <WhatsAppButton />
+        <GoToTop />
+        <Footer />
+        <PopupModal />
         </LoaderProvider>
         <Toaster />
       </body>

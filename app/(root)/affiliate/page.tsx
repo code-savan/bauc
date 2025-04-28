@@ -507,7 +507,7 @@ const AffiliateProgram = () => {
                 <div className='flex items-center gap-3 relative z-30 border-t border-white/20 pt-4'>
                   <div className='rounded-full bg-black/50 flex items-center justify-center w-14 h-14 p-0.5 border border-gray-700 shadow-sm'>
                     <Image src="/collins.png" alt="Collins Onyeaji" width={55} height={55} className="rounded-full" />
-                  </div>
+        </div>
                   <div>
                     <h3 className="text-xl font-semibold">Collins Onyeaji</h3>
                     <p className="text-white/80 font-inter">Managing Director</p>
@@ -862,7 +862,7 @@ const AffiliateProgram = () => {
                 {formErrors.promotionMethodsOther && (
                   <p className="text-red-500 text-xs mt-1">{formErrors.promotionMethodsOther}</p>
                 )}
-              </div>
+                </div>
 
               {/* TERMS & AGREEMENT */}
               <div className="mb-6">
