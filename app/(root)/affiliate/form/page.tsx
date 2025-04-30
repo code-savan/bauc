@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import GreenDivider from '@/app/components/GoldDivider';
 import PremiumCheckbox from '@/app/components/PremiumCheckbox';
 import PremiumTextarea from '@/app/components/PremiumTextarea';
-import AffiliateBreadcrumb from '@/app/components/AffiliateBreadcrumb';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
@@ -460,17 +461,18 @@ const AffiliateProgram = () => {
 
   return (
     <>
-      <div className="container mx-auto mb-6">
-        <AffiliateBreadcrumb currentPage="form" />
-      </div>
-
       <main className="flex h-screen bg-[#f5f5f7]">
         <style jsx global>{scrollbarStyles}</style>
-        <div className=" overflow-hidden mx-auto p-2 flex flex-col lg:flex-row">
+        <div className="overflow-hidden mx-auto p-2 flex flex-col lg:flex-row">
           {/* Left column - Form */}
           <div className="w-full lg:w-1/2 lg:pr-8 lg:py-16 md:py-6 overflow-auto thin-scrollbar">
             <div className="max-w-md mx-auto">
-              <h1 className="text-2xl font-extrabold text-gray-900 mb-3 leading-tight mt-5 md:mt-0">BAUC INTERNATIONAL AFFILIATE APPLICATION FORM</h1>
+              <Link href="/affiliate" className="flex items-center text-gray-600 hover:text-green-600 transition-colors mb-4 mt-4 lg:mt-0">
+                <ArrowLeft className="h-4 w-4 mr-1" />
+                <span className="text-sm">Back to Program Details</span>
+              </Link>
+
+              <h1 className="text-2xl font-extrabold text-gray-900 mb-3 leading-tight">BAUC INTERNATIONAL AFFILIATE APPLICATION FORM</h1>
 
               {/* Mobile testimonial section - only visible on mobile */}
               <div className="mb-8 lg:hidden">
