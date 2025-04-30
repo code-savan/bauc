@@ -39,7 +39,7 @@ export default function PropertyDetails({ params }: { params: { id: string } }) 
                     <PenTool className="h-5 w-5 text-green-600" strokeWidth={1.5} />
                   </div>
                 </div>
-              </div>
+            </div>
 
               <div className="grid grid-cols-3 gap-4 my-6">
                 <div className="bg-white p-3 rounded-lg shadow-sm flex flex-col items-center justify-center">
@@ -64,7 +64,7 @@ export default function PropertyDetails({ params }: { params: { id: string } }) 
                 <Construction className="h-12 w-12 text-green-600" strokeWidth={1.5} />
               </div>
             </div>
-          </div>
+            </div>
 
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Building Property Details</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
