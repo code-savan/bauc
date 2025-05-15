@@ -8,8 +8,9 @@ export default function HeroSection() {
   return (
     <section className="relative h-[85vh] min-h-[600px]" id="#">
       <div className="absolute inset-0 bg-black/40 z-10" />
+      {/* https://images.unsplash.com/photo-1600585154340-be6161a56a0c */}
       <Image
-        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+        src="https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?q=80&w=2894"
         alt="Luxury Real Estate"
         fill
         className="object-cover"
